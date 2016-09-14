@@ -1,4 +1,15 @@
-# Game Design Document for *M.A.D.*
+# Game Design Document for *Max & Duke* 
+
+![](mad.jpg)
+
+By team **Hatters**🎩:
+
+- Bowen Zhang
+- Haoyuan Ma
+- Jibin Lyu
+- Yankuan Zhang
+- Yang Xu
+- Zhonghao Wang
 
 ## Overview 
 *Max & Duke* is a physics puzzle game which run on iOS devices. Our idea came from the animation, [The Secret Life of Pets](http://www.imdb.com/title/tt2709768/), which struck the film industry on 2016 summer. In the movie as well as the game, Max and Duke are two dogs and perform as two main characters. 
@@ -9,11 +20,10 @@ In this game, the player should configure a route for Max and Duke and help them
 ### 🗺 App Map 
 ![](screens.png)
 
-||||
-|---|---|---|
 | 1 | 2 | 3 |
-| 4 | 5 | 6 |
-| 7 | 8 | 9 |
+|---|---|---|
+| **4** | **5** | **6** |
+| **7** | **8** | **9** |
 
 ### 📱 Screens 
 
@@ -72,7 +82,7 @@ In this game, the player should configure a route for Max and Duke and help them
 
 ### 🎨 Artwork 
 Most of the artwork is based on that from the movie.
-Here is a sample screen short:
+Here is a draft screen shot for the sake of demonstration:
 
 ![](samplescreenshot.png)
 
@@ -104,30 +114,42 @@ A ladder can be placed onto any fixed object, which enables dogs to climb up and
 A box would be a stepping stone for dogs. Moreover, only Duke could move it.
 
 ### 🐶 Characters 
-Player can control two dogs, Max and Duke, which are also the protagonists of *The Secret Life of Pets*. In some scenes, there may be other characters, like cats and rabbits. But they are following certain rules, which is controlled by system.
-
-#### Capabilities
+Player can control Max and Duke. 
 
 | Capabilities | Max | Duke |
 | --------- | --- | ---- |
 | Walk | Max walks with certain speed and can walk to left or right. **But he cannot walk while he is in the air.** | Same as Max |
-| Push | **Max can only push boards.** | Duke can push boxes, board from one side to the other. | 
+| Push | **Max can only push boards.** | Duke can push boxes, boards from one side to the other. | 
 | Jump | Max can jump to certain height, from objects where he can stand or hang. **But he cannot jump in the air.**| Same as Max | 
 | Climb down | Max can climb down through ladders. | Same as Max. |
 | Fall | **Max will faint for falling down from somewhere too high.** | Same as Max. |
 
-| Capabilities | cats | Snowball |
-| --- | --- | --- |
-| *TBD* | *TBD* | *TBD* |
+#### Constraints
+But they are limited by certain constraints, which are controlled by system.
 
-#### Constrains
-| Constrains | Details |
-| --- | --- |
-| Weight | **Weight<sub>Duke</sub> = 8 * Weight<sub>Max</sub>** Some places, like glasses can only hold the weight of Max. Duke and Max can stand on top of each other. |
-| Speed | **Speed<sub>Max</sub> = Speed<sub>Duke</sub>** Their speed is slower than conveyor belts, which means they cannot go over conveyor belts when in opposite directions. When they are pushing boxes or boards, their speeds slows down. |
-| Strength | **Strength<sub>Duke</sub> >> Strength<sub>Max</sub>** Duke can push heavy boxes. But they can both push boards. |
-| Height | **Height<sub>Duke</sub> = 2 * Height<sub>Max</sub>**, **Height<sub>box</sub> = 3 * Height<sub>Max</sub>** |
-| Jump Height | **JumpHeight<sub>Max</sub> = 3 * Height<sub>Max</sub>**, **JumpHeight<sub>Duke</sub> = 2 * Height<sub>Max</sub>**.
+##### 1. Weight: 
+
+- Weight<sub>Duke</sub> = 8 * Weight<sub>Max</sub> 
+
+Some places, like glasses can only hold the weight of Max. Duke and Max can stand on top of each other. 
+
+##### 2. Speed:
+- Speed<sub>Max</sub> = Speed<sub>Duke</sub>
+
+Their speed is slower than conveyor belts, which means they cannot go over conveyor belts when in opposite directions. When they are pushing boxes or boards, their speeds slows down. 
+
+##### 3. Strength:
+- Strength<sub>Duke</sub> >> Strength<sub>Max</sub>
+
+Duke can push heavy boxes. But they can both push boards.
+
+##### 4. Height:
+- Height<sub>Duke</sub> = 2 * Height<sub>Max</sub>
+- Height<sub>box</sub> = 3 * Height<sub>Max</sub>
+
+##### 5. Jump Height
+- JumpHeight<sub>Max</sub> = 3 * Height<sub>Max</sub>
+- JumpHeight<sub>Duke</sub> = 2 * Height<sub>Max</sub>
 
 
 ### 🎮 How to play 
@@ -154,6 +176,10 @@ We take and design some tools from the film, such as boards, nails, boxes and so
 
 --
 
-> Made with ❤️ by Hatters🎩.
+> Version 1.0
+> 
+> Composed with ❤️ by Hatters🎩. 
+> 
+> September 13, 2016.
 
 
