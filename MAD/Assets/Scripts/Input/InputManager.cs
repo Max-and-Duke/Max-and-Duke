@@ -7,9 +7,14 @@ public enum Buttons{
 	Up,
 	Down,
 	A,
-	B
+	B,
+	D
 }
 
+public enum Dog{
+	Max,
+	Duke
+}
 public enum Condition{
 	GreaterThan,
 	LessThan
@@ -44,7 +49,8 @@ public class InputManager : MonoBehaviour {
 
 	public InputAxisState[] inputs;
 	public InputState inputState;
-
+//	public Dog dog = Dog.Max;
+//	public int count = 0;
 	// Use this for initialization
 	void Start () {
 	
@@ -53,7 +59,19 @@ public class InputManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		foreach (var input in inputs) {
-			inputState.SetButtonValue(input.button, input.value);
+//			if (input.button == Buttons.D && input.value && count > 100) {
+//				count = 0;
+//
+//				if (dog == Dog.Max) {
+//					dog = Dog.Duke;
+//				} else {
+//					dog = Dog.Max;
+//				}
+//			} else
+//				count++;
+//
+//			if(inputState.dog == dog)
+				inputState.SetButtonValue(input.button, input.value);
 		}
 	}
 }

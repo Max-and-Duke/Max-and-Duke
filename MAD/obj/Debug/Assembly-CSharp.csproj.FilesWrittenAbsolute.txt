@@ -11,3 +11,16 @@
 /Users/Augustus/Files/Max-and-Duke/MAD/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/Augustus/Files/Max-and-Duke/MAD/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/Augustus/Files/Max-and-Duke/MAD/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/UnityEngine.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/UnityEditor.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Mono.Cecil.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Unity.DataContract.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Mono.Cecil.Mdb.dll

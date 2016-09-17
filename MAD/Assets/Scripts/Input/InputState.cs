@@ -17,6 +17,7 @@ public class InputState : MonoBehaviour {
 	public Directions direction = Directions.Right;
 	public float absVelX = 0f;
 	public float absVelY = 0f;
+//	public Dog dog;
 
 	private Rigidbody2D body2d;
 	private Dictionary<Buttons, ButtonState> buttonStates = new Dictionary<Buttons, ButtonState>();

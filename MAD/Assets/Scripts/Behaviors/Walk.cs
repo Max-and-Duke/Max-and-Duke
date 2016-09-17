@@ -36,4 +36,14 @@ public class Walk : AbstractBehavior {
 
 		}
 	}
+
+	private void OnGUI(){
+		if (GUI.Button (new Rect (15, 15, 50, 50), "left")) {
+			body2d.velocity = new Vector2(0f - (float)speed, body2d.velocity.y);
+		}
+
+		if (GUI.Button (new Rect (80, 15, 50, 50), "right")) {
+			body2d.velocity = new Vector2((float)speed, body2d.velocity.y);
+		}
+	}
 }
