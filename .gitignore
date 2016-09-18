@@ -33,7 +33,7 @@ MAD/*.unitypackage
 
 MAD/*.stackdump
  
-MAD/**/.DS_Store*
+**/.DS_Store*
 MAD/**/._*
 MAD/.Spotlight-V100
 MAD/.Trashes

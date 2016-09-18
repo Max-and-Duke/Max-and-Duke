@@ -18,7 +18,7 @@ public class TimeManager : MonoBehaviour {
 
 			if (Mathf.Abs (value -Time.timeScale) < .01f) {
 				Time.timeScale = value;
-				return false;
+				yield return false;
 			}
 
 			yield return null;
