@@ -1,6 +1,20 @@
-﻿<Properties StartupItem="Assembly-CSharp.csproj">
+﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Draggable.cs">
+    <Files>
+      <File FileName="Assets/Scripts/PixelPerfectCamera.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets/Scripts/_TimeManager.cs" Line="26" Column="3" NotebookId="1" />
+      <File FileName="Assets/Scripts/Rotate.cs" Line="15" Column="17" NotebookId="1" />
+      <File FileName="Assets/Scripts/Draggable.cs" Line="11" Column="3" NotebookId="1" />
+    </Files>
+    <FloatingWindows>
+      <FloatingWindow WindowId="1" X="1440" Y="0" Width="1920" Height="1200">
+        <Files>
+          <File FileName="Assets/Scripts/InputManager.cs" Line="26" Column="49" />
+        </Files>
+      </FloatingWindow>
+    </FloatingWindows>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
