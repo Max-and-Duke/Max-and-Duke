@@ -52,6 +52,9 @@ public class InputManager : MonoBehaviour {
 	public InputAxisState[] inputs;
 	public InputState inputState;
 	public Dog curDog = Dog.Max;
+	public CollisionState maxCollisionState;
+	public CollisionState dukeCollisionState;
+
 
 	public Walk maxWalk;
 	public Walk dukeWalk;
@@ -84,10 +87,15 @@ public class InputManager : MonoBehaviour {
 
 
 	public void jump(){
-		if (curDog == Dog.Max)
-			maxJump.body2d.velocity = new Vector2 (maxJump.body2d.velocity.x, maxJump.jumpSpeed);
+		
+		if (curDog == Dog.Max) {
+			if(maxCollisionState.standing)
+				maxJump.body2d.velocity = new Vector2 (maxJump.body2d.velocity.x, maxJump.jumpSpeed);
+		}
 		else {
-			dukeJump.body2d.velocity = new Vector2 (dukeJump.body2d.velocity.x, dukeJump.jumpSpeed);
+			if (dukeCollisionState.standing) {
+				dukeJump.body2d.velocity = new Vector2 (dukeJump.body2d.velocity.x, dukeJump.jumpSpeed);
+			}
 		}
 	}
 
