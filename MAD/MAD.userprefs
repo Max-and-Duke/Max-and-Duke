@@ -1,13 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Input/InputManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Behaviors/MaxFaceDirection.cs">
     <Files>
-      <File FileName="Assets/Scripts/Input/InputManager.cs" Line="76" Column="4" />
+      <File FileName="Assets/Scripts/Behaviors/MaxFaceDirection.cs" Line="22" Column="73" />
       <File FileName="Assets/Scripts/Behaviors/Walk.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ChangeScene.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Behaviors/Jump.cs" Line="15" Column="10" />
+      <File FileName="Assets/Scripts/Behaviors/Jump.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Input/InputState.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Collison/CollisionState.cs" Line="24" Column="27" />
+      <File FileName="Assets/Scripts/Collison/CollisionState.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Behaviors/DukeFaceDirection.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
