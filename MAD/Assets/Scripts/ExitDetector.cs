@@ -3,10 +3,13 @@ using System.Collections;
 
 public class ExitDetector : MonoBehaviour {
 
+	public LevelPassedPanel levelPassedPanel;
+
 	private bool maxIsIn = false;
 	private bool dukeIsIn = false;
 
 	void Start () {
+		levelPassedPanel.gameObject.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -25,6 +28,10 @@ public class ExitDetector : MonoBehaviour {
 		if (collider.gameObject.name == "Ball") {
 			maxIsIn = true;
 		}
+
+		if (CheckBothAreIn ()) {
+			TriggerLevelPassedPanel ();
+		}
 	}
 
 	void OnTriggerExit2D(Collider2D collider) {
@@ -42,6 +49,12 @@ public class ExitDetector : MonoBehaviour {
 	}
 
 	public bool CheckBothAreIn() {
-		return maxIsIn && dukeIsIn;
+		return maxIsIn; //maxIsIn && dukeIsIn;
 	}
+
+	private void TriggerLevelPassedPanel(){
+		levelPassedPanel.Choice ();
+	}
+
+
 }
