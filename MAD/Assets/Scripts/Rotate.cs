@@ -4,8 +4,9 @@ using System.Collections;
 public class Rotate : MonoBehaviour {
 
 	// Use this for initialization
+	public static Rotate instance;
 	public float delay = 2.0f;
-	public bool active = true;
+	public bool active = false;
 
 	public int rotationDirection = -1; // -1 for clockwise, 1 for anti-clockwise
 	public int rotationStep = 10;    // should be less than 90
@@ -13,8 +14,10 @@ public class Rotate : MonoBehaviour {
 	private Vector3 currentRotation, targetRotation;
 
 	void Start () {
+		instance = this;
+
 		StartCoroutine (objectRotator ());
-		rotateObject ();
+//		rotateObject ();
 	}
 
 	IEnumerator objectRotator() {
