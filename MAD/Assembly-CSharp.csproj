@@ -50,7 +50,9 @@
      <Compile Include="Assets\Scripts\Behaviors\Jump.cs" />
      <Compile Include="Assets\Scripts\Behaviors\SimpleMovement.cs" />
      <Compile Include="Assets\Scripts\Behaviors\Walk.cs" />
+     <Compile Include="Assets\Scripts\ButtonPress.cs" />
      <Compile Include="Assets\Scripts\Collison\CollisionState.cs" />
+     <Compile Include="Assets\Scripts\ExitDetector.cs" />
      <Compile Include="Assets\Scripts\Input\InputManager.cs" />
      <Compile Include="Assets\Scripts\Input\InputState.cs" />
      <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />

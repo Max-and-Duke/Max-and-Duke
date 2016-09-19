@@ -1,5 +1,6 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Input/InputManager.cs">
     <Files>
       <File FileName="Assets/Scripts/Input/InputManager.cs" Line="88" Column="3" />
@@ -12,6 +13,14 @@
       <File FileName="Assets/Scripts/Behaviors/Walk.cs" Line="43" Column="1" />
       <File FileName="Assets/Scripts/Behaviors/AbstractBehavior.cs" Line="8" Column="27" />
       <File FileName="Assets/Scripts/_TimeManager.cs" Line="23" Column="4" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ButtonPress.cs">
+    <Files>
+      <File FileName="Assets/Scripts/ButtonPress.cs" Line="19" Column="33" />
+      <File FileName="Assets/Scripts/PixelPerfectCamera.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Rotate.cs" Line="20" Column="21" />
+      <File FileName="Assets/Scripts/_PlayerAnimationManeger.cs" Line="1" Column="1" />
+>>>>>>> master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

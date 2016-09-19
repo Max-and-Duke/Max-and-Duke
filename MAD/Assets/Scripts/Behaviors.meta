@@ -1,7 +1,11 @@
 fileFormatVersion: 2
 guid: 7fa4a730c121c45a0a6e24d9e158bac9
 folderAsset: yes
+<<<<<<< HEAD:MAD/Assets/Scripts/Behaviors.meta
 timeCreated: 1474080211
+=======
+timeCreated: 1474059638
+>>>>>>> master:MAD/Assets/Prefabs.meta
 licenseType: Free
 DefaultImporter:
   userData: 
