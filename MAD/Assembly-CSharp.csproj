@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CollisionDectect.cs" />
      <Compile Include="Assets\Scripts\Draggable.cs" />
      <Compile Include="Assets\Scripts\InputManager.cs" />
      <Compile Include="Assets\Scripts\PixelPerfectCamera.cs" />

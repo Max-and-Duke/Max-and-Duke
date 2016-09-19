@@ -10,27 +10,30 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	private Vector2 inputPosition;
 	private Vector2 touchOffset;
 	private Vector2 pivotOffset;
-	Text instruction;
-
-	void Start()
-	{
-		Debug.Log("Start");
-		instruction = GetComponent<Text>();
-		Debug.Log (instruction);
-	}
+	private Transform startParent;
+	public Text countTool;
+	public GameObject panel;
+	private bool collide = false;
 
 	public void OnBeginDrag(PointerEventData eventData) {
 		itemBeingDragged = gameObject;
 		startPosition = transform.position;
 		inputPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-//		pivotOffset = startPosition - startPosition;
+		pivotOffset = inputPosition - startPosition;
+		//startParent = transform.parent;
+		Debug.Log (startPosition);
+		//Debug.Log ("OnBeginDrag");
+	}
 
+	void OnTriggerEnter2D(Collider2D collider) {
+		//		if (collider.gameObject.name == "Board") {
+		Debug.Log ("zhuang");
+		//		}
 
-		Debug.Log ("OnBeginDrag");
 	}
 
 	public void OnDrag(PointerEventData eventData) {
-		Debug.Log ("OnDrag");
+		//Debug.Log ("OnDrag");
 		inputPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 //		RaycastHit2D[] touches = Physics2D.RaycastAll(inputPosition, inputPosition, 1f);
 //		if (touches.Length > 0)
@@ -45,16 +48,20 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 //			}
 //		}
 
-//		itemBeingDragged.transform.position = inputPosition + touchOffset;
-		itemBeingDragged.transform.position = inputPosition;
+		transform.position = inputPosition - pivotOffset;
+//		itemBeingDragged.transform.position = inputPosition;
 
 //		this.transform.position = new Vector3(Input.mousePosition.x - Screen.width / 2  * PixelPerfectCamera.pixelToUnits, Input.mousePosition.y - Screen.height / 2 * PixelPerfectCamera.pixelToUnits, 0);
 	}
+		
 
 	public void OnEndDrag(PointerEventData eventData) {
 		itemBeingDragged = null;
-//		transform.position = startPosition;
-		Debug.Log ("OnEndDrag");
+
+//		if (transform.renderer.bounds.Intersects(object2.renderer.bounds)) {
+//			// Do some stuff
+//		}
+		//Debug.Log ("OnEndDrag");
 	}
 
 
