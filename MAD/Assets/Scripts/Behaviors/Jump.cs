@@ -29,13 +29,9 @@ public class Jump : AbstractBehavior {
 		body2d.velocity = new Vector2 (vel.x, jumpSpeed);
 	}
 
-	private void OnGUI(){
-		var vel = body2d.velocity;
-
-		if (GUI.Button (new Rect (900, 15, 50, 50), "jump")) {
-			body2d.velocity = new Vector2 (vel.x, jumpSpeed);
-		}
-
-	
-	}
+//	private void OnGUI(){
+//		c
+//
+//	
+//	}
 }

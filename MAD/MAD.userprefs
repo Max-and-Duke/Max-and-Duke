@@ -1,6 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Input/InputManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Input/InputManager.cs" Line="88" Column="3" />
+      <File FileName="Assets/Scripts/Input/InputState.cs" Line="21" Column="1" />
+      <File FileName="Assets/Scripts/Behaviors/FaceDirection.cs" Line="22" Column="59" />
+      <File FileName="Assets/Scripts/Behaviors/SimpleMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Managers/PlayerManager.cs" Line="36" Column="21" />
+      <File FileName="Assets/Scripts/Behaviors/Jump.cs" Line="27" Column="19" />
+      <File FileName="Assets/Scripts/Collison/CollisionState.cs" Line="28" Column="33" />
+      <File FileName="Assets/Scripts/Behaviors/Walk.cs" Line="43" Column="1" />
+      <File FileName="Assets/Scripts/Behaviors/AbstractBehavior.cs" Line="8" Column="27" />
+      <File FileName="Assets/Scripts/_TimeManager.cs" Line="23" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

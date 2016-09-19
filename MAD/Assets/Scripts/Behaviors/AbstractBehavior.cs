@@ -6,8 +6,9 @@ public abstract class AbstractBehavior : MonoBehaviour {
 	public Buttons[] inputButtons;
 
 	protected InputState inputState;
-	protected Rigidbody2D body2d;
+	public Rigidbody2D body2d;
 	protected CollisionState collisionState;
+	public Dog dog = Dog.Max;
 
 	protected virtual void Awake(){
 		inputState = GetComponent<InputState> ();
