@@ -20,6 +20,6 @@ public class MaxFaceDirection : AbstractBehavior {
 //		}
 
 		transform.localScale = new Vector3 ((float)inputState.direction*50, 50, 1);
-		Debug.Log (transform.position.x);
+//		Debug.Log (transform.position.x);
 	}
 }
