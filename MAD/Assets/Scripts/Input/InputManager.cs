@@ -54,7 +54,8 @@ public class InputManager : MonoBehaviour {
 	public Dog curDog = Dog.Max;
 	public CollisionState maxCollisionState;
 	public CollisionState dukeCollisionState;
-
+	public static bool maxCanClimb = false;
+	public static bool dukeCanClimb = false;
 
 	public Walk maxWalk;
 	public Walk dukeWalk;
@@ -62,11 +63,15 @@ public class InputManager : MonoBehaviour {
 	public Jump maxJump;
 	public Jump dukeJump;
 
+	public static Rigidbody2D maxBody2d ;
+	public static Rigidbody2D dukeBody2d ;
+
 //	public Dog dog = Dog.Max;
 //	public int count = 0;
 	// Use this for initialization
 	void Start () {
-	
+		maxBody2d = maxWalk.body2d;
+		dukeBody2d = dukeWalk.body2d;
 	}
 
 	public void moveLeft(){
@@ -89,12 +94,22 @@ public class InputManager : MonoBehaviour {
 	public void jump(){
 		
 		if (curDog == Dog.Max) {
-			if(maxCollisionState.standing)
+			if (maxCollisionState.standing && !maxCanClimb)
 				maxJump.body2d.velocity = new Vector2 (maxJump.body2d.velocity.x, maxJump.jumpSpeed);
+			else if (maxCanClimb) {
+				maxJump.body2d.gravityScale = 0;
+				maxJump.body2d.velocity = new Vector2 (0, maxJump.jumpSpeed);
+
+			}
 		}
 		else {
-			if (dukeCollisionState.standing) {
+			if (dukeCollisionState.standing && !dukeCanClimb) {
 				dukeJump.body2d.velocity = new Vector2 (dukeJump.body2d.velocity.x, dukeJump.jumpSpeed);
+			}
+			else if (dukeCanClimb) {
+				dukeJump.body2d.gravityScale = 0;
+				dukeJump.body2d.velocity = new Vector2 (0, dukeJump.jumpSpeed);
+
 			}
 		}
 	}
@@ -104,6 +119,16 @@ public class InputManager : MonoBehaviour {
 			curDog = Dog.Duke;
 		} else {
 			curDog = Dog.Max;
+		}
+	}
+
+	public void climbDown(){
+		if (curDog == Dog.Max && maxCanClimb) {
+			maxWalk.body2d.gravityScale = 0;
+			maxJump.body2d.velocity = new Vector2 (0, -maxJump.jumpSpeed);
+		} else if (curDog == Dog.Duke && dukeCanClimb) {
+			dukeWalk.body2d.gravityScale = 0;
+			dukeJump.body2d.velocity = new Vector2 (0, -dukeJump.jumpSpeed);
 		}
 	}
 //	private void OnGUI(){
@@ -162,4 +187,5 @@ public class InputManager : MonoBehaviour {
 				inputState.SetButtonValue(input.button, input.value);
 		}
 	}
+
 }

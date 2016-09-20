@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DukeFaceDirection : AbstractBehavior {
+public class MaxFaceDirection : AbstractBehavior {
 
 	// Use this for initialization
 	void Start () {
@@ -10,15 +10,16 @@ public class DukeFaceDirection : AbstractBehavior {
 	
 	// Update is called once per frame
 	void Update () {
-		var right = inputState.GetButtonValue (inputButtons [0]);
-		var left = inputState.GetButtonValue (inputButtons [1]);
+//		var right = inputState.GetButtonValue (inputButtons [0]);
+//		var left = inputState.GetButtonValue (inputButtons [1]);
+//
+//		if (right) {
+//			inputState.direction = Directions.Right;
+//		} else if (left) {
+//			inputState.direction = Directions.Left;
+//		}
 
-		if (right) {
-			inputState.direction = Directions.Right;
-		} else if (left) {
-			inputState.direction = Directions.Left;
-		}
-
-		transform.localScale = new Vector3 ((float)inputState.direction*20, 20, 1);
+		transform.localScale = new Vector3 ((float)inputState.direction*50, 50, 1);
+		Debug.Log (transform.position.x);
 	}
 }

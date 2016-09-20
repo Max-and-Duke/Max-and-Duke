@@ -24,3 +24,7 @@
 /Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/obj/Debug/Assembly-CSharp.dll
+/Users/xy/Study/Class/526/Max-and-Duke/MAD/obj/Debug/Assembly-CSharp.dll.mdb
