@@ -40,14 +40,14 @@ public class StairCollisonDetect : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D collider){
 		if (collider.gameObject.name == "Max") {
 			InputManager.maxCanClimb = false;
-			InputManager.maxBody2d.gravityScale = 40;
+			InputManager.maxBody2d.gravityScale = InputManager.GRAVITY;
 			InputManager.maxBody2d.isKinematic = false;
 
 		}
 
 		if (collider.gameObject.name == "Duke") {
 			InputManager.dukeCanClimb = false;
-			InputManager.dukeBody2d.gravityScale = 40;
+			InputManager.dukeBody2d.gravityScale = InputManager.GRAVITY;
 			InputManager.dukeBody2d.isKinematic = false;
 
 		}

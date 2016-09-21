@@ -1143,7 +1143,7 @@ MonoBehaviour:
   inputButtons: 05000000
   body2d: {fileID: 510559999}
   dog: 0
-  jumpSpeed: 500
+  jumpSpeed: 900
 --- !u!114 &510559995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1218,7 +1218,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 40
+  m_GravityScale: 120
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1267,7 +1267,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 510559992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 513, y: 282.6, z: 8}
+  m_LocalPosition: {x: -700, y: 266, z: 8}
   m_LocalScale: {x: 50, y: 50, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   inputButtons: 05000000
   body2d: {fileID: 532707111}
   dog: 1
-  jumpSpeed: 500
+  jumpSpeed: 700
 --- !u!114 &532707107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1474,7 +1474,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 40
+  m_GravityScale: 120
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2631,6 +2631,7 @@ GameObject:
   - 222: {fileID: 1035479432}
   - 114: {fileID: 1035479431}
   - 114: {fileID: 1035479430}
+  - 114: {fileID: 1035479433}
   m_Layer: 5
   m_Name: Switch Player
   m_TagString: Untagged
@@ -2742,6 +2743,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1035479428}
+--- !u!114 &1035479433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1035479428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05d0bec1939954c17a2f56b789b45fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSprite: {fileID: 21300000, guid: 8169eb1dbf7da4f5c8b2e278b433e904, type: 3}
+  dukeSprite: {fileID: 21300000, guid: 2b62c60b687cb4f3097a34aec37f82f1, type: 3}
 --- !u!1 &1086876458
 GameObject:
   m_ObjectHideFlags: 0
@@ -2759,7 +2773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1086876459
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2828,7 +2842,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1086876458}
   m_UseAutoMass: 1
-  m_Mass: 5639.124
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 120
@@ -3822,7 +3836,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1917474306}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1277692705}
+        m_MethodName: rePosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1917474306

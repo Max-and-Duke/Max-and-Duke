@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public enum Buttons{
@@ -56,6 +57,11 @@ public class InputManager : MonoBehaviour {
 	public CollisionState dukeCollisionState;
 	public static bool maxCanClimb = false;
 	public static bool dukeCanClimb = false;
+	public static Vector3 maxPosition = new Vector3 (-700, 266, 8);
+	public static Vector3 dukePosition = new Vector3 (-547, 293, 8);
+
+	public static float GRAVITY = 120f;
+
 
 	public Walk maxWalk;
 	public Walk dukeWalk;
@@ -77,6 +83,8 @@ public class InputManager : MonoBehaviour {
 	void Start () {
 		maxBody2d = maxWalk.body2d;
 		dukeBody2d = dukeWalk.body2d;
+		maxBody2d.gravityScale = GRAVITY;
+		dukeBody2d.gravityScale = GRAVITY;
 	}
 
 	public void pressLeft(){
@@ -113,10 +121,17 @@ public class InputManager : MonoBehaviour {
 	}
 
 	public void switchDog(){
+		GameObject button = GameObject.Find ("Switch Player");
+		Image im = button.GetComponent<Image> ();
+		DogSprites ds = button.GetComponent<DogSprites> ();
+
 		if (curDog == Dog.Max) {
 			curDog = Dog.Duke;
+			im.sprite = ds.dukeSprite;
+
 		} else {
 			curDog = Dog.Max;
+			im.sprite = ds.maxSprite;
 		}
 	}
 
@@ -131,6 +146,12 @@ public class InputManager : MonoBehaviour {
 				dukeJump.body2d.velocity = new Vector2 (dukeJump.body2d.velocity.x, dukeJump.jumpSpeed);
 			}
 		}
+	}
+
+
+	public void rePosition(){
+		maxBody2d.transform.position = maxPosition;
+		dukeBody2d.transform.position = dukePosition;
 	}
 
 
