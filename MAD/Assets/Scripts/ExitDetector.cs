@@ -51,7 +51,7 @@ public class ExitDetector : MonoBehaviour {
 	}
 
 	public bool CheckBothAreIn() {
-		return maxIsIn; //maxIsIn && dukeIsIn;
+		return maxIsIn && dukeIsIn;
 	}
 
 	private void TriggerLevelPassedPanel(){
