@@ -39,9 +39,21 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		startPosition = itemBeingDragged.transform.position;
 		if (itemBeingDragged.tag == "Board") {
 			countTool.text = "x " + boardNum;
+			var children = itemBeingDragged.GetComponentsInChildren<Image>();
+			foreach( Image child in children){
+				//Debug.Log(child);
+				if (child.name == "RotateButton") {
+					//Debug.Log ("hah");
+					child.enabled = false;
+				}
+			}
 		} else if (itemBeingDragged.tag == "Nail"){
 			countTool.text = "x " + nailNum;
 		}
+
+
+
+		
 	}
 
 
@@ -50,24 +62,33 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		oneClickStartPosition = itemBeingDragged.transform.position;
 		inputPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		pivotOffset = inputPosition - oneClickStartPosition;
-		Debug.Log ("onbegin()");
+		//Debug.Log ("onbegin()");
 		if (itemBeingDragged.GetComponent<Collider2D> ().bounds.Intersects (panel.GetComponent<Collider2D> ().bounds)) {
 			if (itemBeingDragged.tag == "Board") {
 				boardNum = boardNum - 1;
 				countTool.text = "x " + boardNum;
 				image.rectTransform.sizeDelta = new Vector2 (boardWidth, boardHeight);
 
-				sceneCollider = itemBeingDragged.GetComponent<BoxCollider2D>();
+				sceneCollider = itemBeingDragged.GetComponent<BoxCollider2D> ();
 				sceneCollider.size = new Vector2 (boardWidth, boardHeight);
 		
 //				sceneCollider.bounds.size = new Vector3 (boardWidth, boardHeight, 0);
-			} else if (itemBeingDragged.tag == "Nail"){
+			} else if (itemBeingDragged.tag == "Nail") {
 				nailNum = nailNum - 1;
 				countTool.text = "x " + nailNum;
 				image.rectTransform.sizeDelta = new Vector2 (nailWidth, nailHeight);
 			}
 
 			image.sprite = itemOutSidePanel;
+		} else {
+			var children = itemBeingDragged.GetComponentsInChildren<Image>();
+			foreach( Image child in children){
+				//Debug.Log(child);
+				if (child.name == "RotateButton") {
+					//Debug.Log ("hah");
+					child.enabled = false;
+				}
+			}
 		}
 
 	}
@@ -91,11 +112,25 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	public void OnEndDrag(PointerEventData eventData) {
 		
 
-		if (itemBeingDragged.GetComponent<Collider2D>().bounds.Intersects (panel.GetComponent<Collider2D>().bounds)) {
+		if (itemBeingDragged.GetComponent<Collider2D> ().bounds.Intersects (panel.GetComponent<Collider2D> ().bounds)) {
 			if (itemBeingDragged.tag == "Board") {
 				boardNum = boardNum + 1;
 				countTool.text = "x " + boardNum;
-			} else if (itemBeingDragged.tag == "Nail"){
+				//reset the object rotate to 0
+				itemBeingDragged.transform.rotation=Quaternion.identity;
+
+
+				var children = itemBeingDragged.GetComponentsInChildren<Image> ();
+				foreach (Image child in children) {
+					//Debug.Log (child);
+					if (child.name == "RotateButton") {
+						//Debug.Log ("haha drog");
+						child.enabled = false;
+					}
+				}
+
+
+			} else if (itemBeingDragged.tag == "Nail") {
 				nailNum = nailNum + 1;
 				countTool.text = "x " + nailNum;
 			}
@@ -103,6 +138,17 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 			image.rectTransform.sizeDelta = new Vector2 (originImageWidth, originImageHeight);
 			transform.position = startPosition;
+		} else {
+			if (itemBeingDragged.tag == "Board") {
+				var children = itemBeingDragged.GetComponentsInChildren<Image> ();
+				foreach (Image child in children) {
+					//Debug.Log (child);
+					if (child.name == "RotateButton") {
+						//Debug.Log ("haha drog");
+						child.enabled = true;
+					}
+				}
+			}
 		}
 	}
 
