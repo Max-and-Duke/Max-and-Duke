@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PixelPerfectCamera : MonoBehaviour {
+public class PixelPerfectCamera : MonoBehaviour{
 
 	public static float pixelToUnits = 1f;
 	public static float scale = 1f;
