@@ -247,14 +247,13 @@ public class InputManager : MonoBehaviour {
 		}
 
 		if (downKeyDown) {
-			Debug.Log (dukeCanClimb);
 			if (curDog == Dog.Max && maxCanClimb) {
 				maxWalk.body2d.gravityScale = 0;
-				maxJump.body2d.velocity = new Vector2 (0, 0);
+//				maxJump.body2d.velocity = new Vector2 (0, 0);
 				maxBody2d.transform.position = new Vector3(maxBody2d.transform.position.x, maxBody2d.transform.position.y-2, maxBody2d.transform.position.z);
 			} else if (curDog == Dog.Duke && dukeCanClimb) {
 				dukeWalk.body2d.gravityScale = 0;
-				dukeJump.body2d.velocity = new Vector2 (0, -dukeJump.jumpSpeed);
+//				dukeJump.body2d.velocity = new Vector2 (0, -dukeJump.jumpSpeed);
 				dukeBody2d.transform.position = new Vector3(dukeBody2d.transform.position.x, dukeBody2d.transform.position.y-2, dukeBody2d.transform.position.z);
 
 			}
