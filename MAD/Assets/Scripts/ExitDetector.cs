@@ -18,6 +18,7 @@ public class ExitDetector : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider) {
 		if (collider.gameObject.name == "Max") {
+			Debug.Log ("Max Tube");
 			maxIsIn = true;
 		}
 		if (collider.gameObject.name == "Duke") {
@@ -26,6 +27,7 @@ public class ExitDetector : MonoBehaviour {
 
 		//test:
 		if (collider.gameObject.name == "Ball") {
+			Debug.Log ("Ball Tube");
 			maxIsIn = true;
 		}
 
