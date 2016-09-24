@@ -16,20 +16,14 @@ public class ExitDetector : MonoBehaviour {
 	void Update () {
 	}
 
-	void OnTriggerEnter2D(Collider2D collider) {
-		if (collider.gameObject.name == "Max") {
-			Debug.Log ("Max Tube");
-			maxIsIn = true;
-		}
-		if (collider.gameObject.name == "Duke") {
-			dukeIsIn = true;
-		}
+	void UpdateStatus(Collider2D collider, bool enter) {
+		maxIsIn = collider.gameObject.name == "Max" ? enter : maxIsIn;
+		dukeIsIn = collider.gameObject.name == "Duke" ? enter : dukeIsIn;		
+	}
 
-		//test:
-		if (collider.gameObject.name == "Ball") {
-			Debug.Log ("Ball Tube");
-			maxIsIn = true;
-		}
+	void OnTriggerEnter2D(Collider2D collider) {
+
+		UpdateStatus (collider, true);
 
 		if (CheckBothAreIn ()) {
 			TriggerLevelPassedPanel ();
@@ -37,17 +31,7 @@ public class ExitDetector : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D(Collider2D collider) {
-		if (collider.gameObject.name == "Max") {
-			maxIsIn = false;
-		}
-		if (collider.gameObject.name == "Duke") {
-			dukeIsIn = false;
-		}
-
-		//test:
-		if (collider.gameObject.name == "Ball") {
-			maxIsIn = false;
-		}
+		UpdateStatus (collider, false);
 	}
 
 	public bool CheckBothAreIn() {
