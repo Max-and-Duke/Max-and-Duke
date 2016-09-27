@@ -1416,7 +1416,7 @@ GameObject:
   - 114: {fileID: 510559995}
   - 114: {fileID: 510559994}
   - 114: {fileID: 510559997}
-  - 58: {fileID: 510559993}
+  - 61: {fileID: 510559993}
   m_Layer: 0
   m_Name: Max
   m_TagString: Untagged
@@ -1424,8 +1424,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &510559993
-CircleCollider2D:
+--- !u!61 &510559993
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -1437,7 +1437,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1}
 --- !u!114 &510559994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1672,7 +1672,7 @@ GameObject:
   - 114: {fileID: 532707107}
   - 114: {fileID: 532707106}
   - 114: {fileID: 532707109}
-  - 58: {fileID: 532707105}
+  - 61: {fileID: 532707105}
   m_Layer: 0
   m_Name: Duke
   m_TagString: Untagged
@@ -1680,8 +1680,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &532707105
-CircleCollider2D:
+--- !u!61 &532707105
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -1693,7 +1693,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1, y: 1}
 --- !u!114 &532707106
 MonoBehaviour:
   m_ObjectHideFlags: 0
