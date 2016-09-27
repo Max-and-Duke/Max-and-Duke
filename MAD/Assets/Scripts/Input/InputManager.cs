@@ -87,40 +87,40 @@ public class InputManager : MonoBehaviour {
 		dukeBody2d.gravityScale = GRAVITY;
 	}
 
-	public void pressLeft(){
+	public void PressLeft(){
 		leftKeyDown = true;
 	}
 
-	public void releaseLeft(){
+	public void ReleaseLeft(){
 		leftKeyDown = false;
 	}
 
-	public void pressRight(){
+	public void PressRight(){
 		rightKeyDown = true;
 	}
 
-	public void releaseRight(){
+	public void ReleaseRight(){
 		rightKeyDown = false;
 	}
 
 
-	public void pressUp(){
+	public void PressUp(){
 		upKeyDown = true;
 	}
 
-	public void releaseUp(){
+	public void ReleaseUp(){
 		upKeyDown = false;
 	}
 
-	public void pressDown(){
+	public void PressDown(){
 		downKeyDown = true;
 	}
 
-	public void releasDown(){
+	public void ReleasDown(){
 		downKeyDown = false;
 	}
 
-	public void switchDog(){
+	public void SwitchDog(){
 		GameObject button = GameObject.Find ("Switch Player");
 		Image im = button.GetComponent<Image> ();
 		DogSprites ds = button.GetComponent<DogSprites> ();
@@ -135,7 +135,7 @@ public class InputManager : MonoBehaviour {
 		}
 	}
 
-	public void jump(){
+	public void Jump(){
 		Debug.Log ("Clicked");
 		if (curDog == Dog.Max) {
 			if (maxCollisionState.standing)
@@ -149,7 +149,7 @@ public class InputManager : MonoBehaviour {
 	}
 
 
-	public void rePosition(){
+	public void RePosition(){
 		maxBody2d.transform.position = maxPosition;
 		dukeBody2d.transform.position = dukePosition;
 	}
@@ -257,11 +257,11 @@ public class InputManager : MonoBehaviour {
 			if (curDog == Dog.Max && maxCanClimb) {
 				maxJump.body2d.gravityScale = 0;
 //				maxJump.body2d.velocity = new Vector2 (0, 0);
-				maxBody2d.transform.position = new Vector3 (maxBody2d.transform.position.x, maxBody2d.transform.position.y + 3, maxBody2d.transform.position.z);
+				maxBody2d.transform.position = new Vector3 (maxBody2d.transform.position.x, maxBody2d.transform.position.y + 6, maxBody2d.transform.position.z);
 			} else if (curDog == Dog.Duke && dukeCanClimb) {
 				dukeJump.body2d.gravityScale = 0;
 //				dukeJump.body2d.velocity = new Vector2 (0, 0);
-				dukeBody2d.transform.position = new Vector3(dukeBody2d.transform.position.x, dukeBody2d.transform.position.y+3, dukeBody2d.transform.position.z);
+				dukeBody2d.transform.position = new Vector3(dukeBody2d.transform.position.x, dukeBody2d.transform.position.y+6, dukeBody2d.transform.position.z);
 
 			}
 
@@ -271,11 +271,11 @@ public class InputManager : MonoBehaviour {
 			if (curDog == Dog.Max && maxCanClimb) {
 				maxWalk.body2d.gravityScale = 0;
 //				maxJump.body2d.velocity = new Vector2 (0, 0);
-				maxBody2d.transform.position = new Vector3(maxBody2d.transform.position.x, maxBody2d.transform.position.y-2, maxBody2d.transform.position.z);
+				maxBody2d.transform.position = new Vector3(maxBody2d.transform.position.x, maxBody2d.transform.position.y-4, maxBody2d.transform.position.z);
 			} else if (curDog == Dog.Duke && dukeCanClimb) {
 				dukeWalk.body2d.gravityScale = 0;
 //				dukeJump.body2d.velocity = new Vector2 (0, -dukeJump.jumpSpeed);
-				dukeBody2d.transform.position = new Vector3(dukeBody2d.transform.position.x, dukeBody2d.transform.position.y-2, dukeBody2d.transform.position.z);
+				dukeBody2d.transform.position = new Vector3(dukeBody2d.transform.position.x, dukeBody2d.transform.position.y-4, dukeBody2d.transform.position.z);
 
 			}
 		}

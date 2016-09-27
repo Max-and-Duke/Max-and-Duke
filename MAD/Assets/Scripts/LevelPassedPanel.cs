@@ -9,8 +9,7 @@ public class LevelPassedPanel : MonoBehaviour {
 	public Button replayButton;
 	public Button nextButton;
 	public GameObject levelPassedPanelObject;
-
-
+	public GameObject buttonPanelObject;
 
 	void OnClickLevelButton () {
 		Debug.Log ("Go back to level list.");
@@ -25,27 +24,52 @@ public class LevelPassedPanel : MonoBehaviour {
 		Debug.Log ("Go to next level!");
 	}
 		
+	void HideGameObjects() {
+		GameObject modeManagerGameObject = GameObject.Find ("Mode Manager");
+		ModeManager modeManager = modeManagerGameObject.GetComponent<ModeManager> ();
+		modeManager.DisableAllGameObjectsInPool ();
+	}
+		
+	void GoToPlayMode() {
+		GameObject modeManagerGameObject = GameObject.Find ("Mode Manager");
+		ModeManager modeManager = modeManagerGameObject.GetComponent<ModeManager> ();
+		modeManager.GoToMode (Mode.Play);
+	}
+
+	void ClosePanel () {
+		levelPassedPanelObject.SetActive (false);
+	}
+
+	void ShowButtonPanel() {
+		buttonPanelObject.SetActive (true);
+	}
+		
+	void HideButtonPanel() {
+		
+		buttonPanelObject.SetActive (false);
+	}
+
 	public void Choice () {
 		levelPassedPanelObject.SetActive (true);
+		HideGameObjects ();
+		HideButtonPanel ();
 
 		levelButton.onClick.RemoveAllListeners();
 		levelButton.onClick.AddListener (OnClickLevelButton);
-		//		levelButton.onClick.AddListener (ClosePanel);
 
 		replayButton.onClick.RemoveAllListeners();
 		replayButton.onClick.AddListener (OnClickReplayButton);
 		replayButton.onClick.AddListener (ClosePanel);
+		replayButton.onClick.AddListener (GoToPlayMode);
+		replayButton.onClick.AddListener (ShowButtonPanel);
 
 		nextButton.onClick.RemoveAllListeners();
 		nextButton.onClick.AddListener (OnClickNextButton);
-		//		nextButton.onClick.AddListener (ClosePanel);
 
 		levelButton.gameObject.SetActive (true);
 		replayButton.gameObject.SetActive (true);
 		nextButton.gameObject.SetActive (true);
 	}
 
-	void ClosePanel () {
-		levelPassedPanelObject.SetActive (false);
-	}
+
 }
