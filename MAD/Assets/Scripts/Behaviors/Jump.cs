@@ -29,9 +29,5 @@ public class Jump : AbstractBehavior {
 		body2d.velocity = new Vector2 (vel.x, jumpSpeed);
 	}
 
-//	private void OnGUI(){
-//		c
-//
-//	
-//	}
+
 }
