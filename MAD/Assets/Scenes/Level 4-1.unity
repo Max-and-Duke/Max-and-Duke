@@ -219,7 +219,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1277692705}
-          m_MethodName: pressDown
+          m_MethodName: PressDown
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -236,7 +236,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1277692705}
-          m_MethodName: releasDown
+          m_MethodName: ReleasDown
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -998,7 +998,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1277692705}
-        m_MethodName: jump
+        m_MethodName: Jump
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1060,7 +1060,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1277692705}
-          m_MethodName: pressUp
+          m_MethodName: PressUp
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1077,7 +1077,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1277692705}
-          m_MethodName: releaseUp
+          m_MethodName: ReleaseUp
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1417,7 +1417,7 @@ GameObject:
   - 114: {fileID: 510559994}
   - 114: {fileID: 510559997}
   - 61: {fileID: 510559993}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Max
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1673,7 +1673,7 @@ GameObject:
   - 114: {fileID: 532707106}
   - 114: {fileID: 532707109}
   - 61: {fileID: 532707105}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Duke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2590,7 +2590,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1277692705}
-          m_MethodName: pressRight
+          m_MethodName: PressRight
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2607,7 +2607,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1277692705}
-          m_MethodName: releaseRight
+          m_MethodName: ReleaseRight
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3210,7 +3210,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1277692705}
-          m_MethodName: pressLeft
+          m_MethodName: PressLeft
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3227,7 +3227,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1277692705}
-          m_MethodName: releaseLeft
+          m_MethodName: ReleaseLeft
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3318,7 +3318,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1277692705}
-        m_MethodName: switchDog
+        m_MethodName: SwitchDog
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
