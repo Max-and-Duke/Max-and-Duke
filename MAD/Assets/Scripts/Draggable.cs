@@ -41,8 +41,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 			countTool.text = "x " + boardNum;
 			var children = itemBeingDragged.GetComponentsInChildren<Image>();
 			foreach( Image child in children){
-				//Debug.Log(child);
-				if (child.name == "RotateButton") {
+				Debug.Log(child.name);
+				if (child.name == "RotateButton-right" || child.name == "RotateButton-left") {
 					//Debug.Log ("hah");
 					child.enabled = false;
 				}
@@ -84,7 +84,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 			var children = itemBeingDragged.GetComponentsInChildren<Image>();
 			foreach( Image child in children){
 				//Debug.Log(child);
-				if (child.name == "RotateButton") {
+				if (child.name == "RotateButton-right"|| child.name == "RotateButton-left") {
 					//Debug.Log ("hah");
 					child.enabled = false;
 				}
@@ -123,7 +123,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 				var children = itemBeingDragged.GetComponentsInChildren<Image> ();
 				foreach (Image child in children) {
 					//Debug.Log (child);
-					if (child.name == "RotateButton") {
+					if (child.name == "RotateButton-right"|| child.name == "RotateButton-left") {
 						//Debug.Log ("haha drog");
 						child.enabled = false;
 					}
@@ -143,7 +143,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 				var children = itemBeingDragged.GetComponentsInChildren<Image> ();
 				foreach (Image child in children) {
 					//Debug.Log (child);
-					if (child.name == "RotateButton") {
+					if (child.name == "RotateButton-right"|| child.name == "RotateButton-left") {
 						//Debug.Log ("haha drog");
 						child.enabled = true;
 					}
