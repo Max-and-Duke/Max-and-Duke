@@ -480,6 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemBeingRotate: {fileID: 1664071679}
   nailPosition: {x: 0, y: 0, z: 0}
+  boardPos: {x: 0, y: 0, z: 0}
 --- !u!114 &185744572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,6 +1218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemBeingRotate: {fileID: 1717501993}
   nailPosition: {x: 0, y: 0, z: 0}
+  boardPos: {x: 0, y: 0, z: 0}
 --- !u!114 &380101657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3743,6 +3745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemBeingRotate: {fileID: 1664071679}
   nailPosition: {x: 0, y: 0, z: 0}
+  boardPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1079648607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4475,7 +4478,6 @@ GameObject:
   - 222: {fileID: 1323306093}
   - 114: {fileID: 1323306092}
   - 61: {fileID: 1323306091}
-  - 114: {fileID: 1323306090}
   m_Layer: 5
   m_Name: Toolbox
   m_TagString: Untagged
@@ -4503,17 +4505,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -457.5}
   m_SizeDelta: {x: 433, y: 165}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1323306090
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1323306088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1283c14ca974d4907ba7cb552d0c3fe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1323306091
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5846,6 +5837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemBeingRotate: {fileID: 1717501993}
   nailPosition: {x: 0, y: 0, z: 0}
+  boardPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1836353070
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,13 +11,16 @@ public class RotateButton : MonoBehaviour,IBeginDragHandler,IDragHandler, IEndDr
 	public Vector3 nailPosition;
 	private Vector3 pivotOffset;
 	// Use this for initialization
+	public Vector3 boardPos;
 
 	void Start () {
 //		v =  (itemBeingRotate.transform.position - nailStaticPosition);;
+
 	
 	}
 	
 	public void OnBeginDrag(PointerEventData eventData) {
+		Debug.Log ("!!!!!");
 		var draggableScript = this.transform.parent.GetComponent<Draggable>();
 		if (draggableScript.dragNailNum == 1) {
 			nailPosition = draggableScript.nailPosition;
@@ -27,7 +30,9 @@ public class RotateButton : MonoBehaviour,IBeginDragHandler,IDragHandler, IEndDr
 //			Debug.Log ("parent name is:" + this.transform.parent.name);
 //			Debug.Log ("parent pivot position is" + this.transform.parent.transform.position);
 		}
-		Debug.Log (this.transform.parent.transform.position);
+		boardPos = this.transform.parent.transform.position;
+
+		Debug.Log ("begindrag boardposition" + this.transform.parent.transform.position);
 		pivotOffset = Camera.main.ScreenToWorldPoint (Input.mousePosition) - this.transform.position;
 		pivotOffset.z = 0;
 		var tmp = this.transform.position - nailPosition;
@@ -39,6 +44,7 @@ public class RotateButton : MonoBehaviour,IBeginDragHandler,IDragHandler, IEndDr
 	}
 
 	public void OnDrag(PointerEventData eventData) {
+		Debug.Log ("~~~~~~~");
 		//Vector3 pos = Camera.main.WorldToScreenPoint (itemBeingRotate.transform.position);
 	    Vector3 pos = Camera.main.WorldToScreenPoint (nailPosition);
 		//Vector3 dir = Input.mousePosition - pos;
@@ -47,15 +53,22 @@ public class RotateButton : MonoBehaviour,IBeginDragHandler,IDragHandler, IEndDr
 //		if (dir.x < 0) {
 //			dir.x= dir.x * (-1);
 //		}
-		Debug.Log (dir);
+//		Debug.Log (dir);
 		float angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
+//		Debug.Log (angle);
+//		Debug.Log (nailPosition);
+		Debug.Log("ondrag" + v);
 		Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
 		itemBeingRotate.transform.position = nailPosition + q * v;
 		itemBeingRotate.transform.rotation = q;
+		boardPos = this.transform.parent.transform.position;
+
 
 	}
 
 	public void OnEndDrag(PointerEventData eventData) {
-		Debug.Log ("OnEndDrag");
+		Debug.Log ("onEndDrag" + this.transform.parent.transform.position);
+//		Debug.Log ("OnEndDrag");
+//		itemBeingRotate.transform.parent.transform.rotation=Quaternion.identity;
 	}
 }

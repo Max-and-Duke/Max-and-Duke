@@ -229,6 +229,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					board.dragNailNum += 1;
 					//dragNailNum += 1;
 					board.nailPosition = NailDropAreaLeft.transform.position;
+					Debug.Log (board.nailPosition);
 					board.canBeDrag = false;
 					flagFound = true;
 					Debug.Log ("nail pin on the board" + board.dragNailNum);
