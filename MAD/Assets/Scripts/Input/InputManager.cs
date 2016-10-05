@@ -57,8 +57,8 @@ public class InputManager : MonoBehaviour {
 	public CollisionState dukeCollisionState;
 	public static bool maxCanClimb = false;
 	public static bool dukeCanClimb = false;
-	public static Vector3 maxPosition = new Vector3 (-700, 266, 8);
-	public static Vector3 dukePosition = new Vector3 (-547, 293, 8);
+	public static Vector3 maxPosition = new Vector3 (-700, 320, 8);
+	public static Vector3 dukePosition = new Vector3 (-547, 320, 8);
 
 	public static float GRAVITY = 120f;
 

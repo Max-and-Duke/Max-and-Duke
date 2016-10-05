@@ -1418,7 +1418,7 @@ GameObject:
   - 114: {fileID: 510559997}
   - 61: {fileID: 510559993}
   - 114: {fileID: 510560003}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Max
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1468,6 +1468,9 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 256
+  dogLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   standing: 0
   bottomPosition: {x: 0, y: 0}
   collisionRadius: 30
@@ -1686,7 +1689,7 @@ GameObject:
   - 114: {fileID: 532707109}
   - 61: {fileID: 532707105}
   - 114: {fileID: 532707115}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Duke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1736,6 +1739,9 @@ MonoBehaviour:
   collisionLayer:
     serializedVersion: 2
     m_Bits: 256
+  dogLayer:
+    serializedVersion: 2
+    m_Bits: 512
   standing: 0
   bottomPosition: {x: 0, y: 0}
   collisionRadius: 60
@@ -4340,7 +4346,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1277692705}
-        m_MethodName: rePosition
+        m_MethodName: RePosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5546,7 +5552,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1277692705}
-        m_MethodName: rePosition
+        m_MethodName: RePosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
