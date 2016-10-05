@@ -6,35 +6,53 @@ using UnityEngine.EventSystems;
 public class RotateButton : MonoBehaviour,IBeginDragHandler,IDragHandler, IEndDragHandler{
 
 	public GameObject itemBeingRotate;
-
+	private Vector3 v;
+//	public Vector3 nailStaticPosition;
+	public Vector3 nailPosition;
+	private Vector3 pivotOffset;
 	// Use this for initialization
 
 	void Start () {
+//		v =  (itemBeingRotate.transform.position - nailStaticPosition);;
 	
 	}
 	
 	public void OnBeginDrag(PointerEventData eventData) {
-		Debug.Log ("OnBeginDrag");
-//		var children = GetComponentsInChildren<Image>();
-//		foreach( Image child in children){
-//			Debug.Log(child);
-//			if (child.name == "RotateButton") {
-//				Debug.Log ("hah");
-//				child.enabled = true;
-//			}
-//		}
+		var draggableScript = this.transform.parent.GetComponent<Draggable>();
+		if (draggableScript.dragNailNum == 1) {
+			nailPosition = draggableScript.nailPosition;
+//			Debug.Log ("this is a nail");
+		} else {
+			nailPosition = this.transform.parent.transform.position;
+//			Debug.Log ("parent name is:" + this.transform.parent.name);
+//			Debug.Log ("parent pivot position is" + this.transform.parent.transform.position);
+		}
+		Debug.Log (this.transform.parent.transform.position);
+		pivotOffset = Camera.main.ScreenToWorldPoint (Input.mousePosition) - this.transform.position;
+		pivotOffset.z = 0;
+		var tmp = this.transform.position - nailPosition;
+		if (tmp.x < 0) {
+			v = nailPosition - this.transform.parent.transform.position;
+		} else {
+			v = this.transform.parent.transform.position - nailPosition;
+		}
 	}
 
 	public void OnDrag(PointerEventData eventData) {
-		Debug.Log ("OnDrag");
-		// the hack way !!
-//		this.transform.position = Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y,0)) - new Vector3(0,0,-10);
-		//this.transform.position = Input.mousePosition;
-		Vector3 pos = Camera.main.WorldToScreenPoint(itemBeingRotate.transform.position);
+		//Vector3 pos = Camera.main.WorldToScreenPoint (itemBeingRotate.transform.position);
+	    Vector3 pos = Camera.main.WorldToScreenPoint (nailPosition);
+		//Vector3 dir = Input.mousePosition - pos;
 		Vector3 dir = Input.mousePosition - pos;
+		dir.z = 0;
+//		if (dir.x < 0) {
+//			dir.x= dir.x * (-1);
+//		}
+		Debug.Log (dir);
 		float angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
 		Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
+		itemBeingRotate.transform.position = nailPosition + q * v;
 		itemBeingRotate.transform.rotation = q;
+
 	}
 
 	public void OnEndDrag(PointerEventData eventData) {

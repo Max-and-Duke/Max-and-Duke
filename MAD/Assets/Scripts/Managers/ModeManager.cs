@@ -51,6 +51,7 @@ public class ModeManager : MonoBehaviour {
 		switch (mode) {
 		case Mode.Deploy:
 			SetAllGameObjectsActiveWithSettings (gameObjectSettingsForDeployMode);
+			setIsKinematic (true);
 			break;
 		case Mode.Play:
 			SetAllGameObjectsActiveWithSettings (gameObjectSettingsForPlayMode);
@@ -66,7 +67,20 @@ public class ModeManager : MonoBehaviour {
 		foreach(KeyValuePair<string, GameObject> entry in gameObjectPool)
 		{
 			bool active = !entry.Value.activeInHierarchy;
+
+			if (!active) {
+				setIsKinematic (active);
+				setHingeJoint ();
+				setRotateArrow (active);
+			}
+
 			entry.Value.gameObject.SetActive (active);
+
+			if (active) {
+				setIsKinematic (active);
+				setRotateArrow (active);
+			}
+
 			Debug.Log ("Just toggled <" + entry.Key + "> to " + active.ToString () + ".");
 		}
 	}
@@ -87,6 +101,54 @@ public class ModeManager : MonoBehaviour {
 		mode = (Mode)((1 + (int)mode) % numOfModes); // switch to next mode
 
 		image.sprite = modeSprite [(int) mode];
+	}
+
+	public void setIsKinematic(bool a){
+		if (a) {
+			var boards = GameObject.FindGameObjectsWithTag("Board");
+			foreach (var board in boards) {
+				board.GetComponent<Rigidbody2D> ().isKinematic = true;
+			}
+
+		} else {
+			var boards = GameObject.FindGameObjectsWithTag("Board");
+			foreach (var board in boards) {
+				board.GetComponent<Rigidbody2D> ().isKinematic = false;
+			}
+		}
+	}
+
+	public void setRotateArrow(bool active){
+		var boards = GameObject.FindGameObjectsWithTag("Board");
+		foreach (var board in boards) {
+			var items = board.GetComponentsInChildren<Image> ();
+			foreach (var item in items) {
+				if(item.name == "RotateButton-right"){
+					item.enabled = active;
+				}
+				if (item.name == "RotateButton-left") {
+					item.enabled = active;
+				}
+			}
+		}
+	}
+
+	public void setHingeJoint(){
+		var boards = GameObject.FindGameObjectsWithTag("Board");
+		foreach (var board in boards) {
+			var boardScript = board.transform.GetComponent<Draggable> ();
+			if (boardScript.dragNailNum == 1) {
+				HingeJoint2D boardHJ = board.AddComponent<HingeJoint2D> ();
+				//boardHJ.enableCollision = true;
+				boardHJ.connectedAnchor = boardScript.nailPosition;
+				Debug.Log (board.transform.position);
+				Debug.Log (boardScript.nailPosition);
+				boardHJ.anchor = boardScript.nailPosition - board.transform.position;
+			}
+			if (boardScript.dragNailNum >= 2 ) {
+				board.GetComponent<Rigidbody2D> ().isKinematic = true;
+			}
+		}
 	}
 
 
