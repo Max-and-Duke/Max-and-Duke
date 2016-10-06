@@ -47,7 +47,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		originImageSprite = image.sprite;
 		startPosition = itemBeingDragged.transform.position;
 //		dragNailNum = 0;
-//		nailPosition = new Vector3 (0, 0, 0); 
+//		nailPosition = itemBeingDragged.transform.position; 
 
 
 		//***********
