@@ -19,10 +19,12 @@ public class BoundaryManager : MonoBehaviour {
 			characterPos.x = halfSize - world.x;
 		if (characterPos.x > world.x - halfSize)
 			characterPos.x = world.x - halfSize;
-		if (characterPos.y < halfSize + world.y)
-			characterPos.y = halfSize + world.y;
-		if (characterPos.y > -world.y - halfSize)
-			characterPos.y = -world.y - halfSize;
+		// lower bound
+		if (characterPos.y < halfSize + 2 * world.y)
+			characterPos.y = halfSize + 2 * world.y;
+		// upper bound
+//		if (characterPos.y > -world.y - halfSize)
+//			characterPos.y = -world.y - halfSize;
 		transform.position = characterPos;
 	}
 }
