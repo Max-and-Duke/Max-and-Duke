@@ -72,17 +72,24 @@ public class InputManager : MonoBehaviour {
 	public static Rigidbody2D maxBody2d ;
 	public static Rigidbody2D dukeBody2d ;
 
-	private bool leftKeyDown = false;
-	private bool rightKeyDown = false;
-	private bool upKeyDown = false;
-	private bool downKeyDown = false;
+	private bool leftKeyDown;
+	private bool rightKeyDown;
+	private bool upKeyDown;
+	private bool downKeyDown;
 
-
-	void Start () {
+	void Awake() {
+		initKeyState ();	
 		maxBody2d = maxWalk.body2d;
 		dukeBody2d = dukeWalk.body2d;
 		maxBody2d.gravityScale = GRAVITY;
 		dukeBody2d.gravityScale = GRAVITY;
+	}
+
+	public void initKeyState() {
+		leftKeyDown = false;
+		rightKeyDown = false;
+     	upKeyDown = false;
+     	downKeyDown = false;
 	}
 
 	public void PressLeft(){

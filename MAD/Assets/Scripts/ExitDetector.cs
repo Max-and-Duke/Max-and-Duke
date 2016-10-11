@@ -4,16 +4,13 @@ using System.Collections;
 public class ExitDetector : MonoBehaviour {
 
 	public LevelPassedPanel levelPassedPanel;
+	public InputManager inputManager;
 
 	private bool maxIsIn = false;
 	private bool dukeIsIn = false;
 
-	void Start () {
+	void Awake () {
 		levelPassedPanel.gameObject.SetActive (false);
-	}
-	
-	// Update is called once per frame
-	void Update () {
 	}
 
 	void UpdateStatus(Collider2D collider, bool enter) {
@@ -26,6 +23,7 @@ public class ExitDetector : MonoBehaviour {
 		UpdateStatus (collider, true);
 
 		if (CheckBothAreIn ()) {
+			inputManager.initKeyState ();
 			TriggerLevelPassedPanel ();
 		}
 	}

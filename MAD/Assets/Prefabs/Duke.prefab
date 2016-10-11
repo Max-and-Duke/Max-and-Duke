@@ -43,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011740643692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -800, y: 280, z: 8}
+  m_LocalPosition: {x: -800, y: 280, z: 80}
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -100,7 +100,7 @@ Rigidbody2D:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &61000012033465728
 BoxCollider2D:
@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f474eb195260e4d679a5b6af8e18d623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelFailedPanel: {fileID: 0}
 --- !u!114 &114000012928084840
 MonoBehaviour:
   m_ObjectHideFlags: 1
