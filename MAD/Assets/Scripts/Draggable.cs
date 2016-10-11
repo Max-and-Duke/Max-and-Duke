@@ -269,8 +269,11 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 			}
 		}
 		
-
+		Debug.Log (itemBeingDragged.GetComponent<Collider2D> ().bounds.ToString ());
+		Debug.Log (panel.GetComponent<Collider2D> ().bounds.ToString ());
+//
 		if (itemBeingDragged.GetComponent<Collider2D> ().bounds.Intersects (panel.GetComponent<Collider2D> ().bounds)) {
+
 			if (itemBeingDragged.tag == "Board") {
 				boardNum = boardNum + 1;
 				countTool.text = "x " + boardNum;

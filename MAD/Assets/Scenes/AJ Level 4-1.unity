@@ -1149,7 +1149,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 354825452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 59}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -3912,7 +3912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1170855789
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4584,7 +4584,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1323306088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 60}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -4975,7 +4975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1462789269
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5195,7 +5195,7 @@ GameObject:
   - 222: {fileID: 1587577634}
   - 114: {fileID: 1587577633}
   m_Layer: 8
-  m_Name: Toolbar-Board
+  m_Name: ToolBar-Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5208,7 +5208,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1587577631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 59}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -5696,7 +5696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemBeingDragged: {fileID: 1664071679}
-  itemOutSidePanel: {fileID: 21300000, guid: 12c145865bb194ba882e6b32e8f51fb9, type: 3}
+  itemOutSidePanel: {fileID: 21300000, guid: 8b4ef898bafea4e19a9eeea90c253abb, type: 3}
   countTool: {fileID: 485394301}
   panel: {fileID: 1323306088}
   collide: 0
@@ -5822,7 +5822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemBeingDragged: {fileID: 1717501993}
-  itemOutSidePanel: {fileID: 21300000, guid: 12c145865bb194ba882e6b32e8f51fb9, type: 3}
+  itemOutSidePanel: {fileID: 21300000, guid: 8b4ef898bafea4e19a9eeea90c253abb, type: 3}
   countTool: {fileID: 485394301}
   panel: {fileID: 1323306088}
   collide: 0
@@ -6119,6 +6119,11 @@ Prefab:
       propertyPath: inputManager
       value: 
       objectReference: {fileID: 1277692705}
+    - target: {fileID: 50000012190407712, guid: a59e8b67d4b594e3bbf356effd2922a7,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a59e8b67d4b594e3bbf356effd2922a7, type: 2}
   m_IsPrefabParent: 0
