@@ -55,9 +55,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		//Debug.Log(itemBeingDragged.name);
 		//Debug.Log(itemBeingDragged.GetComponentInChildren<Transform>());
 		boardObjects= GameObject.FindGameObjectsWithTag("Board");
-		foreach(var jj in boardObjects){
-			Debug.Log(jj.name);
-		}
+
 //		NailDropAreaLeft = GameObject.Find ("NailDropArea-left");
 //		NailDropAreaRight = GameObject.Find ("NailDropArea-right");
 //		NailDropAreaMiddle = GameObject.Find ("NailDropArea-middle");
@@ -154,21 +152,21 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					var board = NailDropAreaLeft.transform.parent.GetComponent<Draggable> ();
 					board.dragNailNum -= 1;
 					board.canBeDrag = true;
-					Debug.Log ("nail leave the board" + board.dragNailNum);
+//					Debug.Log ("nail leave the board" + board.dragNailNum);
 				} else if (itemBeingDragged.GetComponent<Collider2D> ().bounds.Intersects (NailDropAreaRight.GetComponent<Collider2D> ().bounds)) {
 					//itemBeingDragged.transform.position = NailDropAreaLeft.transform.position;
 					//Debug.Log ("in draggable     " + itemBeingDragged.transform.position);
 					var board = NailDropAreaLeft.transform.parent.GetComponent<Draggable> ();
 					board.dragNailNum -= 1;
 					board.canBeDrag = true;
-					Debug.Log ("nail leave the board" + board.dragNailNum);
+//					Debug.Log ("nail leave the board" + board.dragNailNum);
 				} else if (itemBeingDragged.GetComponent<Collider2D> ().bounds.Intersects (NailDropAreaMiddle.GetComponent<Collider2D> ().bounds)) {
 					//itemBeingDragged.transform.position = NailDropAreaLeft.transform.position;
 					//Debug.Log ("in draggable     " + itemBeingDragged.transform.position);
 					var board = NailDropAreaLeft.transform.parent.GetComponent<Draggable> ();
 					board.dragNailNum -= 1;
 					board.canBeDrag = true;
-					Debug.Log ("nail leave the board" + board.dragNailNum);
+//					Debug.Log ("nail leave the board" + board.dragNailNum);
 				}
 			}
 		}
@@ -252,7 +250,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					board.canBeDrag = false;
 					flagFound = true;
 
-					Debug.Log ("nail pin on the board" + board.dragNailNum);
+//					Debug.Log ("nail pin on the board" + board.dragNailNum);
 				} else if (itemBeingDragged.GetComponent<Collider2D> ().bounds.Intersects (NailDropAreaMiddle.GetComponent<Collider2D> ().bounds)) {
 					itemBeingDragged.transform.position = NailDropAreaMiddle.transform.position;
 					var board = NailDropAreaMiddle.transform.parent.GetComponent<Draggable> ();
@@ -261,7 +259,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					board.canBeDrag = false;
 					flagFound = true;
 
-					Debug.Log ("nail pin on the board" + board.dragNailNum);
+//					Debug.Log ("nail pin on the board" + board.dragNailNum);
 				} 
 			}
 			if (!flagFound){

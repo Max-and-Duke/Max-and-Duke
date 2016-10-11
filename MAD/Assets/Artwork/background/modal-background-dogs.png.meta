@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 51b1f54b3d1c54a5eaa39b4e9796701e
-timeCreated: 1475812845
+guid: fa0dee2964c5b45f79320e0216040355
+timeCreated: 1476146728
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -29,7 +29,7 @@ TextureImporter:
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: 1
+    filterMode: -1
     aniso: 16
     mipBias: -1
     wrapMode: 1
@@ -49,7 +49,7 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings:
-  - buildTarget: iPhone
+  - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -3
     compressionQuality: 50
