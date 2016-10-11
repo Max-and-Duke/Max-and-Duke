@@ -7,7 +7,7 @@ public class CollisionState : MonoBehaviour {
 	public LayerMask dogLayer;
 	public bool standing;
 	public Vector2 bottomPosition = Vector2.zero;
-	public float collisionRadius = 10f;
+	public float collisionRadius = 20f;
 	public Color debugCollisionColor = Color.red;
 
 	// Use this for initialization

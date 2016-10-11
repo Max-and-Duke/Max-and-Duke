@@ -288,14 +288,15 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 						child.enabled = false;
 					}
 				}
-
+				itemBeingDragged.transform.SetParent (GameObject.Find ("ToolBar-Board").transform);
 
 			} else if (itemBeingDragged.tag == "Nail") {
 				nailNum = nailNum + 1;
 				countTool.text = "x " + nailNum;
+				itemBeingDragged.transform.SetParent (GameObject.Find ("ToolBar-Nail").transform);
 			}
 
-			itemBeingDragged.transform.SetParent (GameObject.Find ("Toolbar-Board").transform);
+
 			image.sprite = originImageSprite;
 
 			image.rectTransform.sizeDelta = new Vector2 (originImageWidth, originImageHeight);
