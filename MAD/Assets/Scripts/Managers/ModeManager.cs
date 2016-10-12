@@ -69,20 +69,26 @@ public class ModeManager : MonoBehaviour {
 
 
 			bool active = !entry.Value.activeInHierarchy;
+
+			// deploy mode
 			if (entry.Key.Equals ("Toolbox")) {
-				if (!active) {
+				if (!active) { // if current toolbox is active
 					setIsKinematic (active);
 					setHingeJoint (!active);
-					setRotateArrow (active);
+					//setRotateArrow (active);
+					setDraggable (active);
 				}
 			}
 
 			entry.Value.gameObject.SetActive (active);
+			// play mode
 			if (entry.Key.Equals ("Toolbox")) {
 				if (active) {
 					setIsKinematic (active);
 					setHingeJoint (!active);
-					setRotateArrow (active);
+					//setRotateArrow (active);
+					setDraggable (active);
+
 				}
 			}
 
@@ -123,6 +129,18 @@ public class ModeManager : MonoBehaviour {
 		}
 	}
 
+	public void setDraggable(bool active){
+		var boards = GameObject.FindGameObjectsWithTag("Board");
+		foreach (var board in boards) {
+			board.GetComponent<Draggable> ().enabled = active;
+		}
+
+		var nails = GameObject.FindGameObjectsWithTag("Nail");
+		foreach (var nail in nails) {
+			nail.GetComponent<Draggable> ().enabled = active;
+		}
+	}
+
 	public void setRotateArrow(bool active){
 		var boards = GameObject.FindGameObjectsWithTag("Board");
 		foreach (var board in boards) {
@@ -145,30 +163,15 @@ public class ModeManager : MonoBehaviour {
 				var boardScript = board.transform.GetComponent<Draggable> ();
 				if (boardScript.dragNailNum == 1) {
 					HingeJoint2D boardHJ = board.AddComponent<HingeJoint2D> ();
-					//boardHJ.enableCollision = true;
 					boardHJ.connectedAnchor = boardScript.nailPosition;
-//					boardHJ.anchor = boardScript.nailPosition;
-//					Debug.Log (boardScript.dragNailNum);
-//					Debug.Log (board.transform.position);
-					Debug.Log (boardScript.nailPosition);
-//					boardHJ.autoConfigureConnectedAnchor = false;
+
 					boardHJ.anchor = getRelativePosition(board.transform, boardScript.nailPosition);
-//					var nails = GameObject.FindGameObjectWithTag("Nail");
-//					Debug.Log ("is" + nails.name);
-////					foreach (var nail in nails) {
-////						
-////					}
-//					boardHJ.connectedBody = nails.GetComponent<Rigidbody2D>();
-//					Debug.Log (boardHJ);
-//					Debug.Log (boardHJ.anchor);
-//					Debug.Log (boardHJ.connectedAnchor);
 				}
 				if (boardScript.dragNailNum >= 2) {
 					board.GetComponent<Rigidbody2D> ().isKinematic = true;
 				}
 			}
 		} else {
-			Debug.Log ("hahauiwqyuwrhow");
 			foreach (var board in boards) {
 				Destroy (board.GetComponent<HingeJoint2D> ());
 			}

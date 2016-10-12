@@ -120,6 +120,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		}
 
 		itemBeingDragged.transform.SetParent (GameObject.Find ("Canvas").transform);
+//		itemBeingDragged.transform.SetAsFirstSibling ();
 
 		checkNailLeaveTheBoard ();
 
