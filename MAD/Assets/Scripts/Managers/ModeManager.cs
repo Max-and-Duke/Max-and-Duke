@@ -72,22 +72,22 @@ public class ModeManager : MonoBehaviour {
 
 			// deploy mode
 			if (entry.Key.Equals ("Toolbox")) {
-				if (!active) { // if current toolbox is active
+				if (active) { // if current toolbox is active
 					setIsKinematic (active);
 					setHingeJoint (!active);
-					//setRotateArrow (active);
 					setDraggable (active);
+					setRotateArrow (active);
 				}
 			}
 
 			entry.Value.gameObject.SetActive (active);
 			// play mode
 			if (entry.Key.Equals ("Toolbox")) {
-				if (active) {
+				if (!active) {
 					setIsKinematic (active);
 					setHingeJoint (!active);
-					//setRotateArrow (active);
 					setDraggable (active);
+					setRotateArrow (active);
 
 				}
 			}
@@ -164,8 +164,8 @@ public class ModeManager : MonoBehaviour {
 				if (boardScript.dragNailNum == 1) {
 					HingeJoint2D boardHJ = board.AddComponent<HingeJoint2D> ();
 					boardHJ.connectedAnchor = boardScript.nailPosition;
-
 					boardHJ.anchor = getRelativePosition(board.transform, boardScript.nailPosition);
+					boardHJ.enableCollision = active;
 				}
 				if (boardScript.dragNailNum >= 2) {
 					board.GetComponent<Rigidbody2D> ().isKinematic = true;
