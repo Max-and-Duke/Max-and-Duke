@@ -92,8 +92,8 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013292669800}
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 2500
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 120
@@ -209,3 +209,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelFailedPanel: {fileID: 0}
+  inputManager: {fileID: 0}
