@@ -2837,6 +2837,10 @@ MonoBehaviour:
   collide: 0
   dragNailNum: 0
   nailPosition: {x: 0, y: 0, z: 0}
+  nailPositionsRecord:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   canBeDrag: 0
 --- !u!114 &837349517
 MonoBehaviour:
@@ -2881,7 +2885,7 @@ GameObject:
   - 224: {fileID: 886890543}
   - 222: {fileID: 886890545}
   - 114: {fileID: 886890544}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: ToolBar-Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3782,6 +3786,10 @@ MonoBehaviour:
   collide: 0
   dragNailNum: 0
   nailPosition: {x: 0, y: 0, z: 0}
+  nailPositionsRecord:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   canBeDrag: 0
 --- !u!114 &1068711299
 MonoBehaviour:
@@ -4189,6 +4197,10 @@ MonoBehaviour:
   collide: 0
   dragNailNum: 0
   nailPosition: {x: 0, y: 0, z: 0}
+  nailPositionsRecord:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   canBeDrag: 0
 --- !u!114 &1208949037
 MonoBehaviour:
@@ -4789,6 +4801,10 @@ MonoBehaviour:
   collide: 0
   dragNailNum: 0
   nailPosition: {x: 0, y: 0, z: 0}
+  nailPositionsRecord:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   canBeDrag: 0
 --- !u!114 &1315650538
 MonoBehaviour:
@@ -6853,6 +6869,10 @@ MonoBehaviour:
   collide: 0
   dragNailNum: 0
   nailPosition: {x: 0, y: 0, z: 0}
+  nailPositionsRecord:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   canBeDrag: 0
 --- !u!114 &2098402267
 MonoBehaviour:
@@ -6956,6 +6976,10 @@ MonoBehaviour:
   collide: 0
   dragNailNum: 0
   nailPosition: {x: 0, y: 0, z: 0}
+  nailPositionsRecord:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   canBeDrag: 0
 --- !u!114 &2115875681
 MonoBehaviour:
