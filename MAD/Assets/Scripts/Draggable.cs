@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
@@ -18,6 +19,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 	private GameObject[] boardClonedGameObject;
 	private GameObject[] nailClonedGameObject;
+
+	private Dictionary<string, float> costDetails = new Dictionary<string, float>
+	{
+		{"Board", 30f},
+		{"Nail", 10f}
+	};
+	private static float CostSoFar = 0;
 
 	private static int boardNum = 2;
 	private static int nailNum = 4;
@@ -99,6 +107,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	}
 
 
+
+
+
+
 	public void OnBeginDrag(PointerEventData eventData) {
 		
 		itemBeingDragged = gameObject;
@@ -119,8 +131,16 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 					itemBeingDragged = boardClonedGameObject [boardNum];
 					itemBeingDragged.GetComponent<Image> ().rectTransform.sizeDelta = new Vector2 (boardWidth, boardHeight);
+//					itemBeingDragged.transform.position = inputPosition - pivotOffset;
+//					Debug.Log("before setParent" + itemBeingDragged.transform.position);
 					itemBeingDragged.transform.position = inputPosition - pivotOffset;
-					itemBeingDragged.transform.SetParent(GameObject.Find("ToolBar-Board").transform);
+//					Debug.Log("after reset to toolbox transform position" + itemBeingDragged.transform.position);
+					itemBeingDragged.transform.SetParent(GameObject.Find("Canvas").transform);
+//					Debug.Log("after set parent" + itemBeingDragged.transform.position);
+//					itemBeingDragged.transform.position = new Vector3(itemBeingDragged.transform.position.x,
+//						itemBeingDragged.transform.position.y,
+//						GameObject.Find("Canvas").transform.position.z - 200f);
+//					Debug.Log (itemBeingDragged.transform.position);
 				}
 //				image.rectTransform.sizeDelta = new Vector2 (boardWidth, boardHeight);
 
@@ -144,7 +164,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					itemBeingDragged = nailClonedGameObject [nailNum];
 					itemBeingDragged.GetComponent<Image> ().rectTransform.sizeDelta = new Vector2 (nailWidth, nailHeight);
 					itemBeingDragged.transform.position = inputPosition - pivotOffset;
-					itemBeingDragged.transform.SetParent (GameObject.Find("ToolBar-Nail").transform);
+					itemBeingDragged.transform.SetParent (GameObject.Find("Canvas").transform);
 				}
 
 
@@ -159,11 +179,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 
 
-
+				
 			//***************
 //			if (boardNum >= 0) {
 				itemBeingDragged.GetComponent<Image> ().sprite = itemOutSidePanel;
 //			}
+
+			CostSoFar += costDetails[itemBeingDragged.tag];
+			Debug.Log ("~~~~~~~" + CostSoFar);
 
 
 
@@ -291,7 +314,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 //			boardClonedGameObject[boardNum].transform.position = inputPosition - pivotOffset;
 			itemBeingDragged.transform.position = inputPosition - pivotOffset;
-
+//			Debug.Log ("shubiao" + inputPosition);
+//			Debug.Log ("pivotoffset" + pivotOffset);
+//			Debug.Log ("item" + itemBeingDragged.transform.position);
 		}
 
 	}
@@ -384,8 +409,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		
 //		Debug.Log (itemBeingDragged.GetComponent<Collider2D> ().bounds.ToString ());
 //		Debug.Log (panel.GetComponent<Collider2D> ().bounds.ToString ());
-//
-		if (itemBeingDragged.GetComponent<Collider2D> ().bounds.Intersects (panel.GetComponent<Collider2D> ().bounds)) {
+
+		var itemBeingDraggedBounds = new Bounds (new Vector3 (itemBeingDragged.GetComponent<Collider2D> ().bounds.center.x,
+			                             itemBeingDragged.GetComponent<Collider2D> ().bounds.center.y,
+			                             panel.GetComponent<Collider2D> ().bounds.center.z),
+										itemBeingDragged.GetComponent<Collider2D> ().bounds.extents);
+		
+		if (itemBeingDraggedBounds.Intersects (panel.GetComponent<Collider2D> ().bounds)) {
+			Debug.Log ("haha");
 
 			if (itemBeingDragged.tag == "Board") {
 				boardNum = boardNum + 1;
@@ -421,6 +452,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 
 
+			CostSoFar -= costDetails[itemBeingDragged.tag];
+			Debug.Log ("~~~~~~~`" + CostSoFar);
 
 			image.sprite = originImageSprite;
 

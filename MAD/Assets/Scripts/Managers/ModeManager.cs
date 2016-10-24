@@ -15,6 +15,7 @@ public class ModeManager : MonoBehaviour {
 
 	private Mode currentMode = Mode.Deploy;
 	private int numOfModes = System.Enum.GetNames (typeof(Mode)).Length;
+	private bool active = true;
 
 	// =====================================================================================
 	// this holds all components effected by mode-changing, AKA "Toolbox" and "Console" for now
@@ -111,6 +112,11 @@ public class ModeManager : MonoBehaviour {
 		currentMode = GetNextMode();
 		GoToMode (currentMode);
 		SwithButtonImage ();
+		active = !active;
+		setIsKinematic (active);
+		setHingeJoint (!active);
+		setDraggable (active);
+		setRotateArrow (active);
 	}
 
 	// ================================================================
