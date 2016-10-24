@@ -27,7 +27,7 @@ public class LevelPassedPanel : MonoBehaviour {
 	void HideGameObjects() {
 		GameObject modeManagerGameObject = GameObject.Find ("Mode Manager");
 		ModeManager modeManager = modeManagerGameObject.GetComponent<ModeManager> ();
-		modeManager.DisableAllGameObjectsInPool ();
+		modeManager.HideAllComponents ();
 	}
 		
 	void GoToPlayMode() {

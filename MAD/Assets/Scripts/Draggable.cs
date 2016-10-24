@@ -15,11 +15,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	public Vector3[] nailPositionsRecord = new Vector3[3];
 	public bool canBeDrag;
 
+
 	private GameObject[] boardClonedGameObject;
 	private GameObject[] nailClonedGameObject;
 
 	private static int boardNum = 2;
 	private static int nailNum = 4;
+
 	private float originImageWidth;
 	private float originImageHeight;
 
@@ -45,8 +47,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 //	private GameObject NailDropAreaRight;
 //	private GameObject NailDropAreaMiddle;
 	void Awake() {
+
 //		boardNum = 2;
 //		nailNum = 4;
+
 	}
 	void Start(){
 		boardClonedGameObject = new GameObject[boardNum];
@@ -284,8 +288,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 				return;
 		
 			inputPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+
 //			boardClonedGameObject[boardNum].transform.position = inputPosition - pivotOffset;
 			itemBeingDragged.transform.position = inputPosition - pivotOffset;
+
 		}
 
 	}
@@ -320,7 +326,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					Debug.Log ("pin left nail's parent is" + board.name);
 					board.dragNailNum += 1;
 					//dragNailNum += 1;
+
 					board.nailPositionsRecord[0] = NailDropAreaLeft.transform.position;
+
 					board.nailPosition = NailDropAreaLeft.transform.position;
 
 					board.canBeDrag = false;
@@ -342,7 +350,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					var board = NailDropAreaRight.transform.parent.GetComponent<Draggable> ();
 					Debug.Log ("pin right nail's parent is" + board.name);
 					board.dragNailNum += 1;
+
 					Debug.Log ("nail pin on the board" + board.dragNailNum);
+
 					board.nailPositionsRecord[2] = NailDropAreaRight.transform.position;
 					board.nailPosition = NailDropAreaRight.transform.position;
 					board.canBeDrag = false;
@@ -354,7 +364,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					var board = NailDropAreaMiddle.transform.parent.GetComponent<Draggable> ();
 					Debug.Log ("pin middle nail's parent is" + board.name);
 					board.dragNailNum += 1;
+
 					Debug.Log ("nail pin on the board" + board.dragNailNum);
+
 					board.nailPositionsRecord[1] = NailDropAreaMiddle.transform.position;
 					board.nailPosition = NailDropAreaMiddle.transform.position;
 					board.canBeDrag = false;

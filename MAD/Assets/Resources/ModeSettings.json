@@ -1,0 +1,6 @@
+{
+	"components":[
+		{ "name": "Console", "positions": [-100.0, 100] },
+		{ "name": "Toolbox", "positions": [-500.0, 0] }
+	]
+}
