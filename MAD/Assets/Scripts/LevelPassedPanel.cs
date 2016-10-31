@@ -49,8 +49,39 @@ public class LevelPassedPanel : MonoBehaviour {
 		buttonPanelObject.SetActive (false);
 	}
 
+	private void ShowStars() {
+		var costManager = GameObject.Find ("Cost Manager").GetComponent<CostManager> ();
+		var numOfStars = costManager.GetStarNumbers ();
+	
+		switch (numOfStars) {
+		case 1:
+			SetAlpha ("Star 2", 0f);
+			SetAlpha ("Star 3", 0f);
+			break;
+		case 2:
+			SetAlpha ("Star 2", 1.0f);
+			SetAlpha ("Star 3", 0f);
+			break;
+		case 3:
+			SetAlpha ("Star 2", 1.0f);
+			SetAlpha ("Star 3", 1.0f);
+			break;
+		default:
+			break;
+		}
+	}
+
+	private void SetAlpha(string name, float alpha) {
+		var spriteRenderer = GameObject.Find (name).GetComponent<SpriteRenderer> ();
+		var color = spriteRenderer.color;
+		color.a = alpha;
+		spriteRenderer.color = color;
+	}
+
 	public void Choice () {
+		
 		levelPassedPanelObject.SetActive (true);
+		ShowStars ();
 		HideGameObjects ();
 		HideButtonPanel ();
 

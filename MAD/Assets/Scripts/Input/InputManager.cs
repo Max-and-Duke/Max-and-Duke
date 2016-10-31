@@ -128,15 +128,19 @@ public class InputManager : MonoBehaviour {
 	public void SwitchDog(){
 		GameObject button = GameObject.Find ("Switch Player");
 		Image im = button.GetComponent<Image> ();
+		AudioSource audio = button.GetComponent<AudioSource> ();
 		DogSprites ds = button.GetComponent<DogSprites> ();
 
 		if (curDog == Dog.Max) {
 			curDog = Dog.Duke;
 			im.sprite = ds.dukeSprite;
-
+			audio.clip = (AudioClip)Resources.Load ("dukebark");
+			audio.Play();
 		} else {
 			curDog = Dog.Max;
 			im.sprite = ds.maxSprite;
+			audio.clip = (AudioClip)Resources.Load ("maxbark");
+			audio.Play();
 		}
 	}
 

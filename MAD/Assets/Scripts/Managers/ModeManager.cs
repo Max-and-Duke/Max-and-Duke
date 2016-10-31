@@ -162,6 +162,7 @@ public class ModeManager : MonoBehaviour {
 	}
 
 	public void setIsKinematic(bool a){
+//		var children = GameObject.fin;
 		if (a) {
 			var boards = GameObject.FindGameObjectsWithTag("Board");
 			foreach (var board in boards) {
@@ -224,6 +225,8 @@ public class ModeManager : MonoBehaviour {
 			}
 		}
 	}
+
+
 
 
 	public Vector3 getRelativePosition(Transform origin, Vector3 position) {

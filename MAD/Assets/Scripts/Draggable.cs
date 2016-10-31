@@ -16,16 +16,18 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	public Vector3[] nailPositionsRecord = new Vector3[3];
 	public bool canBeDrag;
 
+	public GameObject boardPrefab;
+	public GameObject nailPrefab;
 
 	private GameObject[] boardClonedGameObject;
 	private GameObject[] nailClonedGameObject;
 
-	private Dictionary<string, float> costDetails = new Dictionary<string, float>
+	private Dictionary<string, int> costDetails = new Dictionary<string, int>
 	{
-		{"Board", 30f},
-		{"Nail", 10f}
+		{"Board", 30},
+		{"Nail", 10}
 	};
-	private static float CostSoFar = 0;
+	private static int CostSoFar = 0;
 
 	private static int boardNum = 2;
 	private static int nailNum = 4;
@@ -48,6 +50,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	private Vector2 oneClickStartPosition;
 	private Image image;
 	private Sprite originImageSprite;
+
+
+	private CostManager costManager;
 
 //	private GameObject[] boardObjects;
 
@@ -73,7 +78,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		dragNailNum = 0;
 //		nailPosition = itemBeingDragged.transform.position; 
 
-
+		costManager = GameObject.Find ("Cost Manager").GetComponent<CostManager> ();
 		//***********
 		//need to revise for if there are several boards
 		//Debug.Log(itemBeingDragged.name);
@@ -120,12 +125,17 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		//Debug.Log ("onbegin()");
 		if (itemBeingDragged.GetComponent<Collider2D> ().bounds.Intersects (panel.GetComponent<Collider2D> ().bounds)) {
 			if (itemBeingDragged.tag == "Board") {
-				boardNum = boardNum - 1;
+				
 
-				if (boardNum == -1) return;
+				if (boardNum <= 0) {
+					itemBeingDragged = null;
+					return;
+				}
+				boardNum = boardNum - 1;
 
 				if (boardNum >= 0) {
 					countTool.text = "x " + boardNum;
+
 
 					boardClonedGameObject[boardNum] = GameObject.Instantiate (itemBeingDragged);
 
@@ -137,24 +147,30 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 //					Debug.Log("after reset to toolbox transform position" + itemBeingDragged.transform.position);
 					itemBeingDragged.transform.SetParent(GameObject.Find("Canvas").transform);
 //					Debug.Log("after set parent" + itemBeingDragged.transform.position);
-//					itemBeingDragged.transform.position = new Vector3(itemBeingDragged.transform.position.x,
-//						itemBeingDragged.transform.position.y,
-//						GameObject.Find("Canvas").transform.position.z - 200f);
-//					Debug.Log (itemBeingDragged.transform.position);
+					itemBeingDragged.transform.position = new Vector3(itemBeingDragged.transform.position.x,
+						itemBeingDragged.transform.position.y,
+						2f);
+					Debug.Log (itemBeingDragged.transform.position);
+
 				}
 //				image.rectTransform.sizeDelta = new Vector2 (boardWidth, boardHeight);
 
-				var sceneCollider = itemBeingDragged.GetComponent<BoxCollider2D> ();
-				sceneCollider.size = new Vector2 (boardWidth, boardHeight);
+//				var sceneCollider = itemBeingDragged.GetComponent<BoxCollider2D> ();
+//				sceneCollider.size = new Vector2 (boardWidth, boardHeight);
 
 
 		
 //				sceneCollider.bounds.size = new Vector3 (boardWidth, boardHeight, 0);
 			} else if (itemBeingDragged.tag == "Nail") {
-				nailNum = nailNum - 1;
+				
 //				image.rectTransform.sizeDelta = new Vector2 (nailWidth, nailHeight);
 
-				if (nailNum == -1) return;
+				if (nailNum <= 0) {
+					itemBeingDragged = null;
+					return;
+				}
+
+				nailNum = nailNum - 1;
 
 				if (nailNum >= 0) {
 					countTool.text = "x " + nailNum;
@@ -181,11 +197,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 				
 			//***************
-//			if (boardNum >= 0) {
-				itemBeingDragged.GetComponent<Image> ().sprite = itemOutSidePanel;
-//			}
+			if (itemBeingDragged == null) return;
+			
+			itemBeingDragged.GetComponent<Image> ().sprite = itemOutSidePanel;
+			
 
 			CostSoFar += costDetails[itemBeingDragged.tag];
+			costManager.SetCosts (CostSoFar);
 			Debug.Log ("~~~~~~~" + CostSoFar);
 
 
@@ -306,14 +324,18 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	}
 
 	public void OnDrag(PointerEventData eventData) {
-		if (canBeDrag) {
-			if (boardNum == -1 || nailNum == -1)
-				return;
+		if (canBeDrag && itemBeingDragged != null) {
+//			if (boardNum == -1 || nailNum == -1)
+//				return;
 		
 			inputPosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 
 //			boardClonedGameObject[boardNum].transform.position = inputPosition - pivotOffset;
 			itemBeingDragged.transform.position = inputPosition - pivotOffset;
+//			itemBeingDragged.transform.position = new Vector3(itemBeingDragged.transform.position.x,
+//				itemBeingDragged.transform.position.y,
+//				200f);
+//			Debug.Log (itemBeingDragged.transform.position);
 //			Debug.Log ("shubiao" + inputPosition);
 //			Debug.Log ("pivotoffset" + pivotOffset);
 //			Debug.Log ("item" + itemBeingDragged.transform.position);
@@ -323,6 +345,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		
 
 	public void OnEndDrag(PointerEventData eventData) {
+		if (itemBeingDragged == null)
+			return;
+
+		itemBeingDragged.transform.position = new Vector3(itemBeingDragged.transform.position.x,
+			itemBeingDragged.transform.position.y,
+			200f);
+		Debug.Log (itemBeingDragged.transform.position);
 		if (itemBeingDragged.tag == "Nail") {
 			var boardObjects= GameObject.FindGameObjectsWithTag("Board");
 			bool flagFound = false;
@@ -403,27 +432,41 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 			if (!flagFound){
 				//				nailNum = nailNum + 1;
 				//				countTool.text = "x " + nailNum;
-				itemBeingDragged.transform.position = startPosition;
+//				itemBeingDragged.transform.position = startPosition;
+
+//				if (nailNum != 0 ) {
+						Object.Destroy (itemBeingDragged);
+						nailNum = nailNum + 1;
+						countTool.text = "x " + nailNum;
+						CostSoFar -= costDetails[itemBeingDragged.tag];
+						costManager.SetCosts (CostSoFar);
+//					}
+
 			}
 		}
 		
 //		Debug.Log (itemBeingDragged.GetComponent<Collider2D> ().bounds.ToString ());
 //		Debug.Log (panel.GetComponent<Collider2D> ().bounds.ToString ());
 
-		var itemBeingDraggedBounds = new Bounds (new Vector3 (itemBeingDragged.GetComponent<Collider2D> ().bounds.center.x,
-			                             itemBeingDragged.GetComponent<Collider2D> ().bounds.center.y,
-			                             panel.GetComponent<Collider2D> ().bounds.center.z),
-										itemBeingDragged.GetComponent<Collider2D> ().bounds.extents);
+//		var itemBeingDraggedBounds = new Bounds (new Vector3 (itemBeingDragged.GetComponent<Collider2D> ().bounds.center.x,
+//			                             itemBeingDragged.GetComponent<Collider2D> ().bounds.center.y,
+//			                             panel.GetComponent<Collider2D> ().bounds.center.z),
+//										itemBeingDragged.GetComponent<Collider2D> ().bounds.extents);
 		
-		if (itemBeingDraggedBounds.Intersects (panel.GetComponent<Collider2D> ().bounds)) {
+		if (itemBeingDragged.GetComponent<Collider2D>().bounds.Intersects (panel.GetComponent<Collider2D> ().bounds)) {
 			Debug.Log ("haha");
 
 			if (itemBeingDragged.tag == "Board") {
+				if (boardNum == -1)
+					return;
 				boardNum = boardNum + 1;
 				countTool.text = "x " + boardNum;
 				//reset the object rotate to 0
 				itemBeingDragged.transform.rotation=Quaternion.identity;
 
+				CostSoFar -= costDetails[itemBeingDragged.tag];
+				costManager.SetCosts (CostSoFar);
+				Debug.Log ("~~~~~~~`" + CostSoFar);
 
 				var children = itemBeingDragged.GetComponentsInChildren<Image> ();
 				foreach (Image child in children) {
@@ -434,14 +477,17 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					}
 				}
 
+
 				if (boardNum != 0 ) {
 					Object.Destroy (itemBeingDragged);
 				}
 //				itemBeingDragged.transform.SetParent (GameObject.Find ("ToolBar-Board").transform);
 
 			} else if (itemBeingDragged.tag == "Nail") {
-				nailNum = nailNum + 1;
-				countTool.text = "x " + nailNum;
+				if (nailNum == -1)
+					return;
+//				nailNum = nailNum + 1;
+//				countTool.text = "x " + nailNum;
 
 				if (nailNum != 0 ) {
 					Object.Destroy (itemBeingDragged);
@@ -452,13 +498,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 
 
-			CostSoFar -= costDetails[itemBeingDragged.tag];
-			Debug.Log ("~~~~~~~`" + CostSoFar);
+//			CostSoFar -= costDetails[itemBeingDragged.tag];
+//			Debug.Log ("~~~~~~~`" + CostSoFar);
 
-			image.sprite = originImageSprite;
-
-			image.rectTransform.sizeDelta = new Vector2 (originImageWidth, originImageHeight);
-			transform.position = startPosition;
+//			image.sprite = originImageSprite;
+//
+//			image.rectTransform.sizeDelta = new Vector2 (originImageWidth, originImageHeight);
+//			transform.position = startPosition;
 		} else {
 			if (itemBeingDragged.tag == "Board") {
 				var children = itemBeingDragged.GetComponentsInChildren<Image> ();
@@ -470,6 +516,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					}
 				}
 			}
+
+
 //			itemBeingDragged.transform.SetParent (GameObject.Find ("Canvas").transform);
 		}
 	}
