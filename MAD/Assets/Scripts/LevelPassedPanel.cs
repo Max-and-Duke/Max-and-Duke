@@ -55,12 +55,12 @@ public class LevelPassedPanel : MonoBehaviour {
 	
 		switch (numOfStars) {
 		case 1:
-			SetAlpha ("Star 2", 0f);
-			SetAlpha ("Star 3", 0f);
+			SetAlpha ("Star 2", 0.2f);
+			SetAlpha ("Star 3", 0.2f);
 			break;
 		case 2:
 			SetAlpha ("Star 2", 1.0f);
-			SetAlpha ("Star 3", 0f);
+			SetAlpha ("Star 3", 0.2f);
 			break;
 		case 3:
 			SetAlpha ("Star 2", 1.0f);
