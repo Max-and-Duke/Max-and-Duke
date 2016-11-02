@@ -27,14 +27,15 @@ public class BoundaryManager : MonoBehaviour {
 		if (characterPos.x > world.x - halfSize)
 			characterPos.x = world.x - halfSize;
 		// lower bound
-		if (characterPos.y < -halfSize + world.y) {
-			characterPos.y = -halfSize + world.y;
+		if (characterPos.y < -halfSize + 2 * world.y) {
+			characterPos.y = -halfSize + 2 * world.y;
 			inputManager.initKeyState ();
-			TriggerLevelFailedPanel ();
+//			TriggerLevelFailedPanel ();
 		}
 		// upper bound
 //		if (characterPos.y > -world.y - halfSize)
 //			characterPos.y = -world.y - halfSize;
+
 		transform.position = characterPos;
 	}
 

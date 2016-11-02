@@ -10,6 +10,7 @@ public class LevelPassedPanel : MonoBehaviour {
 	public Button nextButton;
 	public GameObject levelPassedPanelObject;
 	public GameObject buttonPanelObject;
+	public AudioClip levelPassedAudio;
 
 	void OnClickLevelButton () {
 		Debug.Log ("Go back to level list.");
@@ -79,7 +80,8 @@ public class LevelPassedPanel : MonoBehaviour {
 	}
 
 	public void Choice () {
-		
+		SoundManager.instance.stopMusicSource();
+		SoundManager.instance.PlaySingle (levelPassedAudio);
 		levelPassedPanelObject.SetActive (true);
 		ShowStars ();
 		HideGameObjects ();

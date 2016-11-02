@@ -22,15 +22,19 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	private GameObject[] boardClonedGameObject;
 	private GameObject[] nailClonedGameObject;
 
+	public static void Ha() {
+		
+	}
+
 	private Dictionary<string, int> costDetails = new Dictionary<string, int>
 	{
 		{"Board", 30},
 		{"Nail", 10}
 	};
-	private static int CostSoFar = 0;
+	public static int costSoFar = 0;
 
-	private static int boardNum = 2;
-	private static int nailNum = 4;
+	public static int boardNum = 2;
+	public static int nailNum = 4;
 
 	private float originImageWidth;
 	private float originImageHeight;
@@ -131,8 +135,11 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					itemBeingDragged = null;
 					return;
 				}
-				boardNum = boardNum - 1;
 
+				if (itemBeingDragged.GetComponent<Image> ().sprite == itemOutSidePanel)
+					return;
+				
+				boardNum = boardNum - 1;
 				if (boardNum >= 0) {
 					countTool.text = "x " + boardNum;
 
@@ -169,9 +176,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					itemBeingDragged = null;
 					return;
 				}
-
-				nailNum = nailNum - 1;
-
+				if (itemBeingDragged.GetComponent<Collider2D> ().bounds.Intersects (panel.GetComponent<Collider2D> ().bounds)) {
+					nailNum = nailNum - 1;
+				}
 				if (nailNum >= 0) {
 					countTool.text = "x " + nailNum;
 
@@ -202,9 +209,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 			itemBeingDragged.GetComponent<Image> ().sprite = itemOutSidePanel;
 			
 
-			CostSoFar += costDetails[itemBeingDragged.tag];
-			costManager.SetCosts (CostSoFar);
-			Debug.Log ("~~~~~~~" + CostSoFar);
+			costSoFar += costDetails[itemBeingDragged.tag];
+			costManager.SetCosts (costSoFar);
+			Debug.Log ("~~~~~~~" + costSoFar);
 
 
 
@@ -438,8 +445,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 						Object.Destroy (itemBeingDragged);
 						nailNum = nailNum + 1;
 						countTool.text = "x " + nailNum;
-						CostSoFar -= costDetails[itemBeingDragged.tag];
-						costManager.SetCosts (CostSoFar);
+						costSoFar -= costDetails[itemBeingDragged.tag];
+						costManager.SetCosts (costSoFar);
 //					}
 
 			}
@@ -464,9 +471,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 				//reset the object rotate to 0
 				itemBeingDragged.transform.rotation=Quaternion.identity;
 
-				CostSoFar -= costDetails[itemBeingDragged.tag];
-				costManager.SetCosts (CostSoFar);
-				Debug.Log ("~~~~~~~`" + CostSoFar);
+				costSoFar -= costDetails[itemBeingDragged.tag];
+				costManager.SetCosts (costSoFar);
+				Debug.Log ("~~~~~~~`" + costSoFar);
 
 				var children = itemBeingDragged.GetComponentsInChildren<Image> ();
 				foreach (Image child in children) {
