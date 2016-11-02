@@ -42,6 +42,7 @@ public class LevelFailedPanel : MonoBehaviour {
 	}
 
 	public void Choice () {
+		SoundManager.instance.stopMusicSource ();
 		SoundManager.instance.PlaySingle (levelFailedAudio);
 		levelFailedPanelObject.SetActive (true);
 		HideGameObjects ();

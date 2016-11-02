@@ -159,6 +159,7 @@ public class InputManager : MonoBehaviour {
 
 
 	public void RePosition(){
+		SoundManager.instance.playMusicSource ();
 		maxBody2d.transform.position = maxPosition;
 		maxBody2d.velocity = new Vector2 (0, 0);
 		dukeBody2d.transform.position = dukePosition;

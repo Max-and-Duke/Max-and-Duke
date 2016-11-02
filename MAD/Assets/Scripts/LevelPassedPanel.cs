@@ -80,6 +80,7 @@ public class LevelPassedPanel : MonoBehaviour {
 	}
 
 	public void Choice () {
+		SoundManager.instance.stopMusicSource();
 		SoundManager.instance.PlaySingle (levelPassedAudio);
 		levelPassedPanelObject.SetActive (true);
 		ShowStars ();

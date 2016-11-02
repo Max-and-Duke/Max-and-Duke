@@ -12,6 +12,7 @@ public class FailureDetection : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collider) {
 
 		if (collider.gameObject.name == "Max" || collider.gameObject.name == "Duke") {
+			SoundManager.instance.musicSource.Stop ();
 			levelFailedPanel.Choice ();
 		}
 	}

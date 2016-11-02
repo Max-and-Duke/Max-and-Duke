@@ -31,10 +31,12 @@ public class SoundManager : MonoBehaviour {
 //		tmpMusicSource = musicSource;
 	}
 
-	public void changeBGM(AudioClip bgmClip){
-		if (audioPlay == false) {
-			
-		}
+	public void stopMusicSource(){
+		musicSource.Stop ();
+	}
+
+	public void playMusicSource(){
+		musicSource.Play ();
 	}
 
 

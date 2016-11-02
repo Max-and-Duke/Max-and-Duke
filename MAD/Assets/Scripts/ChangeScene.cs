@@ -11,6 +11,7 @@ public class ChangeScene : MonoBehaviour {
 			Draggable.boardNum = 2;
 			Draggable.nailNum = 4;
 			Draggable.costSoFar = 0;
+			SoundManager.instance.playMusicSource ();
 		}
 		SoundManager.instance.PlaySingle (buttonClick);
 		SceneManager.LoadScene (nextScene, LoadSceneMode.Single);
