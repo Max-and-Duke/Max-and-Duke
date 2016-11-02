@@ -9,6 +9,7 @@ public class LevelFailedPanel : MonoBehaviour {
 	public Button replayButton;
 	public GameObject levelFailedPanelObject;
 	public GameObject buttonPanelObject;
+	public AudioClip levelFailedAudio;
 
 	void OnClickReplayButton () {
 		ClosePanel();
@@ -41,6 +42,7 @@ public class LevelFailedPanel : MonoBehaviour {
 	}
 
 	public void Choice () {
+		SoundManager.instance.PlaySingle (levelFailedAudio);
 		levelFailedPanelObject.SetActive (true);
 		HideGameObjects ();
 		HideButtonPanel ();

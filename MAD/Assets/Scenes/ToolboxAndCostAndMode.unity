@@ -830,6 +830,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010347965402, guid: adfbb150a7757456c9fa95c28685e7d4,
+        type: 2}
+      propertyPath: buttonClick
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b6a0b353158a4724889d41c2144dcc0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: adfbb150a7757456c9fa95c28685e7d4, type: 2}
   m_IsPrefabParent: 0
@@ -924,6 +929,8 @@ GameObject:
   - 114: {fileID: 180149076}
   - 212: {fileID: 180149079}
   - 95: {fileID: 180149080}
+  - 68: {fileID: 180149082}
+  - 114: {fileID: 180149081}
   m_Layer: 5
   m_Name: Background Environment
   m_TagString: Untagged
@@ -1041,6 +1048,33 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &180149081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 180149075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef63551a5acd43f396fb05f7b00014f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelFailedPanel: {fileID: 1462789270}
+--- !u!68 &180149082
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 180149075}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+  - {x: -974.4751, y: -591.3419}
+  - {x: 957.0824, y: -591.34204}
 --- !u!1001 &195051110
 Prefab:
   m_ObjectHideFlags: 0
@@ -4040,6 +4074,7 @@ MonoBehaviour:
   nextButton: {fileID: 748453681}
   levelPassedPanelObject: {fileID: 1170855788}
   buttonPanelObject: {fileID: 1416309104}
+  levelPassedAudio: {fileID: 8300000, guid: 840d573a6c59f4f38a59083764024fd9, type: 3}
 --- !u!212 &1170855793
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4338,7 +4373,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 030f1f9cce2804483b9971e8ab133305, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4895,6 +4930,7 @@ GameObject:
   - 222: {fileID: 1362636974}
   - 114: {fileID: 1362636973}
   - 114: {fileID: 1362636972}
+  - 82: {fileID: 1362636975}
   m_Layer: 5
   m_Name: Replay Button
   m_TagString: Untagged
@@ -4970,6 +5006,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1362636975}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1362636973
@@ -5005,6 +5052,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1362636970}
+--- !u!82 &1362636975
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1362636970}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3b6a0b353158a4724889d41c2144dcc0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1416309104
 GameObject:
   m_ObjectHideFlags: 0
@@ -5506,6 +5627,7 @@ MonoBehaviour:
   replayButton: {fileID: 1437398826}
   levelFailedPanelObject: {fileID: 1462789268}
   buttonPanelObject: {fileID: 1416309104}
+  levelFailedAudio: {fileID: 8300000, guid: cdaef2bceb5e14c6390f48d6fb87f845, type: 3}
 --- !u!114 &1462789271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6139,7 +6261,7 @@ GameObject:
   - 114: {fileID: 1660790089}
   - 114: {fileID: 1660790088}
   m_Layer: 5
-  m_Name: Rest Button
+  m_Name: Reset Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6666,6 +6788,7 @@ GameObject:
   - 222: {fileID: 1967281721}
   - 114: {fileID: 1967281720}
   - 114: {fileID: 1967281719}
+  - 82: {fileID: 1967281722}
   m_Layer: 5
   m_Name: Mode Button
   m_TagString: Untagged
@@ -6741,6 +6864,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
+      - m_Target: {fileID: 1967281722}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1967281720
@@ -6776,6 +6910,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1967281717}
+--- !u!82 &1967281722
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1967281717}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3b6a0b353158a4724889d41c2144dcc0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1968894762
 GameObject:
   m_ObjectHideFlags: 0
@@ -7018,7 +7226,7 @@ GameObject:
   - 61: {fileID: 2098402265}
   - 50: {fileID: 2098402264}
   m_Layer: 8
-  m_Name: Draggable-board (1)
+  m_Name: Draggable-board
   m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

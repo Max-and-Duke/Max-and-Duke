@@ -10,6 +10,7 @@ public enum Mode {
 	Play = 1
 }
 
+
 public class ModeManager : MonoBehaviour {
 	public Sprite[] modeSprite;
 
@@ -113,10 +114,12 @@ public class ModeManager : MonoBehaviour {
 		GoToMode (currentMode);
 		SwithButtonImage ();
 		active = !active;
+		setRotateArrow (active);
+		changeToolBoxBoardTag (active);
 		setIsKinematic (active);
 		setHingeJoint (!active);
 		setDraggable (active);
-		setRotateArrow (active);
+
 	}
 
 	// ================================================================
@@ -160,6 +163,32 @@ public class ModeManager : MonoBehaviour {
 			}
 		}
 	}
+
+
+	public void changeToolBoxBoardTag(bool isGoDeployMode){
+		if (!isGoDeployMode) {
+			var toolBoxBoard = GameObject.Find ("Draggable-board");
+			toolBoxBoard.GetComponent<Collider2D> ().enabled = false;
+			var childrenColliders = toolBoxBoard.GetComponentsInChildren<Collider2D>();
+			foreach (var childCollider in childrenColliders) {
+				childCollider.enabled = false;
+			}
+			toolBoxBoard.tag = "Special-board";
+		} else {
+			var toolBoxBoard = GameObject.FindGameObjectWithTag("Special-board");
+			toolBoxBoard.GetComponent<Collider2D> ().enabled = true;
+			var childrenColliders = toolBoxBoard.GetComponentsInChildren<Collider2D>();
+			foreach (var childCollider in childrenColliders) {
+				childCollider.enabled = true;
+			}
+			toolBoxBoard.tag = "Board";
+		}
+	}
+
+
+
+
+
 
 	public void setIsKinematic(bool a){
 //		var children = GameObject.fin;
