@@ -13,12 +13,13 @@ public class DukeManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float absX = Mathf.Abs (dukeBody.velocity.x);
-		if(absX == 0){
+		if(absX < 0.001){
 			animator.SetInteger ("AnimState", 0);
 		}
 
-		if (absX > 0) {
+		if(absX >= 0.01){
 			animator.SetInteger ("AnimState", 1);
+			Debug.Log (absX);
 		}
 	
 	}

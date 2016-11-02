@@ -13,7 +13,7 @@ public class CostManager : MonoBehaviour {
 		{"1-star", new Color32(249, 64, 0, 255)}
 	};
 
-	private float[] thresholds = new float[] { 0.33f, 0.67f };
+	private float[] thresholds = new float[] { 0.10f, 0.55f };
 
 
 	public int currentCost;
