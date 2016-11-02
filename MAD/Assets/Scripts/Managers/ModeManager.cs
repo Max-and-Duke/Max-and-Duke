@@ -15,6 +15,7 @@ public class ModeManager : MonoBehaviour {
 
 	private Mode currentMode = Mode.Deploy;
 	private int numOfModes = System.Enum.GetNames (typeof(Mode)).Length;
+	private bool active = true;
 
 	// =====================================================================================
 	// this holds all components effected by mode-changing, AKA "Toolbox" and "Console" for now
@@ -111,6 +112,11 @@ public class ModeManager : MonoBehaviour {
 		currentMode = GetNextMode();
 		GoToMode (currentMode);
 		SwithButtonImage ();
+		active = !active;
+		setIsKinematic (active);
+		setHingeJoint (!active);
+		setDraggable (active);
+		setRotateArrow (active);
 	}
 
 	// ================================================================
@@ -156,6 +162,7 @@ public class ModeManager : MonoBehaviour {
 	}
 
 	public void setIsKinematic(bool a){
+//		var children = GameObject.fin;
 		if (a) {
 			var boards = GameObject.FindGameObjectsWithTag("Board");
 			foreach (var board in boards) {
@@ -218,6 +225,8 @@ public class ModeManager : MonoBehaviour {
 			}
 		}
 	}
+
+
 
 
 	public Vector3 getRelativePosition(Transform origin, Vector3 position) {

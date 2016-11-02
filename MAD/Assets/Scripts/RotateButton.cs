@@ -13,7 +13,9 @@ public class RotateButton : MonoBehaviour,IBeginDragHandler,IDragHandler, IEndDr
 	// Use this for initialization
 	public Vector3 boardPos;
 
-	private float anglePrev;
+	private int dragNum = 0;
+
+
 
 	void Start () {
 //		v =  (itemBeingRotate.transform.position - nailStaticPosition);;
@@ -21,11 +23,11 @@ public class RotateButton : MonoBehaviour,IBeginDragHandler,IDragHandler, IEndDr
 	}
 	
 	public void OnBeginDrag(PointerEventData eventData) {
-		anglePrev = itemBeingRotate.transform.eulerAngles.z;
 		var draggableScript = this.transform.parent.GetComponent<Draggable>();
-		if (draggableScript.dragNailNum == 1) {
+		dragNum = draggableScript.dragNailNum;
+		if (dragNum == 1) {
 			nailPosition = draggableScript.nailPosition;
-			Debug.Log ("nailPosition is " + nailPosition);
+//			Debug.Log ("nailPosition is " + nailPosition);
 //			Debug.Log ("this is a nail");
 		} else {
 			nailPosition = this.transform.parent.transform.position;
@@ -34,13 +36,12 @@ public class RotateButton : MonoBehaviour,IBeginDragHandler,IDragHandler, IEndDr
 		}
 
 		boardPos = this.transform.parent.transform.position;
-		Debug.Log ("boardpos is" + boardPos);
+//		Debug.Log ("boardpos is" + boardPos);
 		//Debug.Log ("begindrag boardposition" + this.transform.parent.transform.position);
 
 		pivotOffset = Camera.main.ScreenToWorldPoint (Input.mousePosition) - this.transform.position;
 		pivotOffset.z = 0;
 		//v = this.transform.parent.transform.position - nailPosition;
-		var tmp = this.transform.position - nailPosition;
 		var distBarToNail = Vector3.Distance (this.transform.position, nailPosition);
 		var distPivotToNail = Vector3.Distance (this.transform.parent.transform.position, nailPosition);
 
@@ -59,28 +60,17 @@ public class RotateButton : MonoBehaviour,IBeginDragHandler,IDragHandler, IEndDr
 	}
 
 	public void OnDrag(PointerEventData eventData) {
+		if (dragNum <= 1) {
+			Vector3 pos = Camera.main.WorldToScreenPoint (nailPosition);
+			Vector3 dir = Input.mousePosition - pos;
+			dir.z = 0;
 
-		//Vector3 pos = Camera.main.WorldToScreenPoint (itemBeingRotate.transform.position);
-	    Vector3 pos = Camera.main.WorldToScreenPoint (nailPosition);
-		//Vector3 dir = Input.mousePosition - pos;
-		Vector3 dir = Input.mousePosition - pos;
-		dir.z = 0;
-//		if (dir.x < 0) {
-//			dir.x= dir.x * (-1);
-//		}
+			float angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg; 
+			Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
 
-		float angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg; 
-
-
-		//Debug.Log (">>>>>>" + angle.ToString() + "\n>>>>>>" + anglePrev);
-//		Debug.Log (nailPosition);
-		//angle = angle - anglePrev;
-		//Debug.Log("ondrag" + v);
-		Quaternion q = Quaternion.AngleAxis (angle, Vector3.forward);
-
-		itemBeingRotate.transform.position = nailPosition + q * v;
-		itemBeingRotate.transform.rotation = q;
-
+			itemBeingRotate.transform.position = nailPosition + q * v;
+			itemBeingRotate.transform.rotation = q;
+		}
 
 	}
 
