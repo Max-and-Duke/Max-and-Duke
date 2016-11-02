@@ -55,10 +55,13 @@ public class InputManager : MonoBehaviour {
 	public Dog curDog = Dog.Max;
 	public CollisionState maxCollisionState;
 	public CollisionState dukeCollisionState;
+	public MaxFaceDirection maxFaceDirection;
+	public DukeFaceDirection dukeFaceDirection;
 	public static bool maxCanClimb = false;
 	public static bool dukeCanClimb = false;
 	public static Vector3 maxPosition = new Vector3 (-700, 255, 8);
 	public static Vector3 dukePosition = new Vector3 (-800, 280, 8);
+
 
 	public static float GRAVITY = 120f;
 
@@ -93,6 +96,11 @@ public class InputManager : MonoBehaviour {
 	}
 
 	public void PressLeft(){
+		if (curDog == Dog.Max) {
+			maxFaceDirection.facingRight = false;
+		} else {
+			dukeFaceDirection.facingRight = false;
+		}
 		leftKeyDown = true;
 	}
 
@@ -101,6 +109,11 @@ public class InputManager : MonoBehaviour {
 	}
 
 	public void PressRight(){
+		if (curDog == Dog.Max) {
+			maxFaceDirection.facingRight = true;
+		} else {
+			dukeFaceDirection.facingRight = true;
+		}
 		rightKeyDown = true;
 	}
 
@@ -128,15 +141,19 @@ public class InputManager : MonoBehaviour {
 	public void SwitchDog(){
 		GameObject button = GameObject.Find ("Switch Player");
 		Image im = button.GetComponent<Image> ();
+		AudioSource audio = button.GetComponent<AudioSource> ();
 		DogSprites ds = button.GetComponent<DogSprites> ();
 
 		if (curDog == Dog.Max) {
 			curDog = Dog.Duke;
 			im.sprite = ds.dukeSprite;
-
+			audio.clip = (AudioClip)Resources.Load ("dukebark");
+			audio.Play();
 		} else {
 			curDog = Dog.Max;
 			im.sprite = ds.maxSprite;
+			audio.clip = (AudioClip)Resources.Load ("maxbark");
+			audio.Play();
 		}
 	}
 
@@ -155,6 +172,7 @@ public class InputManager : MonoBehaviour {
 
 
 	public void RePosition(){
+		SoundManager.instance.playMusicSource ();
 		maxBody2d.transform.position = maxPosition;
 		maxBody2d.velocity = new Vector2 (0, 0);
 		dukeBody2d.transform.position = dukePosition;

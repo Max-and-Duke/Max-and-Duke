@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Board
   - Nail
+  - ToolBoxBoard
+  - ToolBoxNail
+  - Special-board
   layers:
   - Default
   - TransparentFX
