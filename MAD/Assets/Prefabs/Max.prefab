@@ -45,8 +45,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011350807494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -601.3, y: 231, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalPosition: {x: -490, y: 230, z: 350}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,7 +59,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011350807494}
   m_UseAutoMass: 1
-  m_Mass: 2535.1875
+  m_Mass: 3396.9365
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 120
@@ -76,7 +76,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1000011350807494}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3c42df9f0bb3a45a99dfdcd6e867e08e, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
@@ -133,20 +133,20 @@ PolygonCollider2D:
       - {x: -75, y: 172}
       - {x: -102, y: 172}
       - {x: -110, y: 169}
-      - {x: -116, y: 174}
-      - {x: -115, y: 185}
-      - {x: -94, y: 197}
-      - {x: -85, y: 204}
-      - {x: -87, y: 210}
-      - {x: -96, y: 215}
-      - {x: -113, y: 220}
-      - {x: -122, y: 219}
-      - {x: -137, y: 214}
-      - {x: -146, y: 200}
-      - {x: -148, y: 193}
-      - {x: -148, y: 170}
-      - {x: -142, y: 160}
-      - {x: -132, y: 148}
+      - {x: -109.694, y: 157.18433}
+      - {x: -112.89814, y: 155.5725}
+      - {x: -112.91767, y: 154.96062}
+      - {x: -116.52973, y: 151.4509}
+      - {x: -112.2235, y: 159.5528}
+      - {x: -110.71369, y: 156.1449}
+      - {x: -113.00007, y: 159.04285}
+      - {x: -115.69416, y: 153.83899}
+      - {x: -118.08227, y: 157.24689}
+      - {x: -114.470406, y: 149.5528}
+      - {x: -116.47053, y: 150.96057}
+      - {x: -97.55289, y: 148.98029}
+      - {x: -110.47037, y: 162.10204}
+      - {x: -121.49006, y: 147.99997}
       - {x: -120, y: 138}
       - {x: -123, y: 119}
       - {x: -122, y: 99}

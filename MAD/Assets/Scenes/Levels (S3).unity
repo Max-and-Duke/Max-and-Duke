@@ -192,16 +192,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 338051153}
-    - target: {fileID: 114000014137761820, guid: 801c8f2e3e3b2445d8e2491f42d320a4,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeSceneTo
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000014137761820, guid: 801c8f2e3e3b2445d8e2491f42d320a4,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Scenes
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 801c8f2e3e3b2445d8e2491f42d320a4, type: 2}
   m_IsPrefabParent: 0

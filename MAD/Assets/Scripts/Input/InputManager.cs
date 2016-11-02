@@ -59,8 +59,8 @@ public class InputManager : MonoBehaviour {
 	public DukeFaceDirection dukeFaceDirection;
 	public static bool maxCanClimb = false;
 	public static bool dukeCanClimb = false;
-	public static Vector3 maxPosition = new Vector3 (-700, 255, 8);
-	public static Vector3 dukePosition = new Vector3 (-800, 280, 8);
+	public static Vector3 maxPosition = new Vector3 (-490, 230, 350);
+	public static Vector3 dukePosition = new Vector3 (-730, 230, 350);
 
 
 	public static float GRAVITY = 120f;

@@ -43,7 +43,7 @@ public class SoundManager : MonoBehaviour {
 	public void stopAudio(){
 		var sceneName = SceneManager.GetActiveScene ().name;
 //		var audio = instance.GetComponent<AudioSource> ();
-		if (sceneName == "ToolboxAndCostAndMode") {
+		if (sceneName == "Level 4_1") {
 			
 			if (GameObject.Find ("Background Image").GetComponent<AudioSource> ().clip != null && musicSource.clip != GameObject.Find ("Background Image").GetComponent<AudioSource> ().clip) {
 //				tmpMusicSource = musicSource;
