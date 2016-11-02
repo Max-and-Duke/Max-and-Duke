@@ -1,13 +1,12 @@
 fileFormatVersion: 2
-guid: 1c1e2f12f499a4186b93efd92605b293
-timeCreated: 1477096414
+guid: 3fcdb497fe8be4308a94483ea4ddd584
+timeCreated: 1477932663
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: max-idle-facing-right_0
-    21300002: max-idle-facing-right_1
-    21300004: max-idle-facing-right_2
-    21300006: max-idle-facing-right_3
+    21300000: duke-stand-facing-left_0
+    21300002: duke-stand-facing-left_1
+    21300004: duke-stand-facing-left_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -53,11 +52,6 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings:
-  - buildTarget: iPhone
-    maxTextureSize: 2048
-    textureFormat: -3
-    compressionQuality: 50
-    allowsAlphaSplitting: 0
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -3
@@ -67,52 +61,39 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: max-idle-facing-right_0
+      name: duke-stand-facing-left_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 300
-        height: 300
+        width: 800
+        height: 800
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: max-idle-facing-right_1
+      name: duke-stand-facing-left_1
       rect:
         serializedVersion: 2
-        x: 300
+        x: 800
         y: 0
-        width: 300
-        height: 300
+        width: 800
+        height: 800
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: max-idle-facing-right_2
+      name: duke-stand-facing-left_2
       rect:
         serializedVersion: 2
-        x: 600
+        x: 1600
         y: 0
-        width: 300
-        height: 300
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: max-idle-facing-right_3
-      rect:
-        serializedVersion: 2
-        x: 900
-        y: 0
-        width: 300
-        height: 300
+        width: 800
+        height: 800
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -3,22 +3,18 @@ using System.Collections;
 
 public class DukeFaceDirection : AbstractBehavior {
 
+	public bool facingRight;
 	// Use this for initialization
 	void Start () {
-	
+		facingRight = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-//		var right = inputState.GetButtonValue (inputButtons [0]);
-//		var left = inputState.GetButtonValue (inputButtons [1]);
-//
-//		if (right) {
-//			inputState.direction = Directions.Right;
-//		} else if (left) {
-//			inputState.direction = Directions.Left;
-//		}
+		float xPos = Mathf.Abs (transform.localScale.x);
+		if (facingRight == false)
+			xPos = -xPos;
 
-		transform.localScale = new Vector3 ((float)inputState.direction*100, 100, 1);
+		transform.localScale = new Vector3 (xPos, transform.localScale.y, transform.localScale.z);
 	}
 }
