@@ -1,12 +1,14 @@
 fileFormatVersion: 2
-guid: 3fcdb497fe8be4308a94483ea4ddd584
-timeCreated: 1477932663
+guid: 7e75939bd7a0846eca1ce3b7e6dc9e5a
+timeCreated: 1477939300
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: duke-stand-facing-left_0
-    21300002: duke-stand-facing-left_1
-    21300004: duke-stand-facing-left_2
+    21300000: duke-walk-right_0
+    21300002: duke-walk-right_1
+    21300004: duke-walk-right_2
+    21300006: duke-walk-right_3
+    21300008: duke-walk-right_4
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -61,39 +63,65 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: duke-stand-facing-left_0
+      name: duke-walk-right_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 800
-        height: 800
+        height: 460
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: duke-stand-facing-left_1
+      name: duke-walk-right_1
       rect:
         serializedVersion: 2
         x: 800
         y: 0
         width: 800
-        height: 800
+        height: 460
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: duke-stand-facing-left_2
+      name: duke-walk-right_2
       rect:
         serializedVersion: 2
         x: 1600
         y: 0
         width: 800
-        height: 800
+        height: 460
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: duke-walk-right_3
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 800
+        height: 460
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: duke-walk-right_4
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 0
+        width: 800
+        height: 460
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
