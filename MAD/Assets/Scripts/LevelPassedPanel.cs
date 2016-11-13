@@ -10,6 +10,7 @@ public class LevelPassedPanel : MonoBehaviour {
 	public Button nextButton;
 	public GameObject levelPassedPanelObject;
 	public GameObject buttonPanelObject;
+	public AudioClip levelPassedAudio;
 
 	void OnClickLevelButton () {
 		Debug.Log ("Go back to level list.");
@@ -27,7 +28,7 @@ public class LevelPassedPanel : MonoBehaviour {
 	void HideGameObjects() {
 		GameObject modeManagerGameObject = GameObject.Find ("Mode Manager");
 		ModeManager modeManager = modeManagerGameObject.GetComponent<ModeManager> ();
-		modeManager.DisableAllGameObjectsInPool ();
+		modeManager.HideAllComponents ();
 	}
 		
 	void GoToPlayMode() {
@@ -49,8 +50,40 @@ public class LevelPassedPanel : MonoBehaviour {
 		buttonPanelObject.SetActive (false);
 	}
 
+	private void ShowStars() {
+		var costManager = GameObject.Find ("Cost Manager").GetComponent<CostManager> ();
+		var numOfStars = costManager.GetStarNumbers ();
+	
+		switch (numOfStars) {
+		case 1:
+			SetAlpha ("Star 2", 0.2f);
+			SetAlpha ("Star 3", 0.2f);
+			break;
+		case 2:
+			SetAlpha ("Star 2", 1.0f);
+			SetAlpha ("Star 3", 0.2f);
+			break;
+		case 3:
+			SetAlpha ("Star 2", 1.0f);
+			SetAlpha ("Star 3", 1.0f);
+			break;
+		default:
+			break;
+		}
+	}
+
+	private void SetAlpha(string name, float alpha) {
+		var spriteRenderer = GameObject.Find (name).GetComponent<SpriteRenderer> ();
+		var color = spriteRenderer.color;
+		color.a = alpha;
+		spriteRenderer.color = color;
+	}
+
 	public void Choice () {
+		SoundManager.instance.stopMusicSource();
+		SoundManager.instance.PlaySingle (levelPassedAudio);
 		levelPassedPanelObject.SetActive (true);
+		ShowStars ();
 		HideGameObjects ();
 		HideButtonPanel ();
 

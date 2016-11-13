@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Board
   - Nail
+  - ToolBoxBoard
+  - ToolBoxNail
+  - Special-board
   layers:
   - Default
   - TransparentFX
@@ -16,8 +19,8 @@ TagManager:
   - 
   - 
   - solid
-  - 
-  - 
+  - Max
+  - Duke
   - 
   - 
   - 
@@ -42,4 +45,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 245551591
+    locked: 0
+  - name: Midground
+    uniqueID: 3047131603
+    locked: 0
+  - name: Character
+    uniqueID: 318069675
+    locked: 0
+  - name: Foreground
+    uniqueID: 2268994105
+    locked: 0
+  - name: UI
+    uniqueID: 2741975111
+    locked: 0
+  - name: Chain
+    uniqueID: 1633897193
     locked: 0

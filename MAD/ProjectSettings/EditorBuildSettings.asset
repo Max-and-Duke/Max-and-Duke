@@ -6,6 +6,28 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Level 4-1.unity
+    path: Assets/Scenes/Main.unity
+  - enabled: 0
+    path: Assets/Scenes/Scenes.unity
+  - enabled: 0
+    path: Assets/Scenes/Levels.unity
   - enabled: 1
+    path: Assets/Scenes/Level 4_1.unity
+  - enabled: 0
     path: Assets/Scenes/Level 4-2.unity
+  - enabled: 0
+    path: Assets/Scenes/AJ Level 4-1.unity
+  - enabled: 1
+    path: Assets/Scenes/ToolboxAndCostAndMode.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels (S4).unity
+  - enabled: 1
+    path: Assets/Scenes/Levels (S3).unity
+  - enabled: 1
+    path: Assets/Scenes/Levels (S5).unity
+  - enabled: 1
+    path: Assets/Scenes/SelectingScenes.unity
+  - enabled: 1
+    path: Assets/Scenes/Level 3_1.unity
+  - enabled: 1
+    path: Assets/Scenes/Level 5_1.unity
