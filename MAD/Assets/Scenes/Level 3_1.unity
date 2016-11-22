@@ -351,6 +351,54 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!1 &76834304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 76834306}
+  - 114: {fileID: 76834305}
+  m_Layer: 0
+  m_Name: KeyboardManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &76834305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 76834304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef7d2e79c66a490d82dd89c0148442b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxWalk: {fileID: 1190070880}
+  dukeWalk: {fileID: 153183861}
+  maxJump: {fileID: 1190070878}
+  dukeJump: {fileID: 153183859}
+  maxCollisionState: {fileID: 1190070879}
+  dukeCollisionState: {fileID: 153183860}
+  maxFaceDirection: {fileID: 1190070876}
+  dukeFaceDirection: {fileID: 153183858}
+--- !u!4 &76834306
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 76834304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -538, y: 293, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
 --- !u!1001 &129637657
 Prefab:
   m_ObjectHideFlags: 0
@@ -4011,7 +4059,6 @@ MonoBehaviour:
     button: 6
     condition: 0
   inputState: {fileID: 0}
-  curDog: 0
   maxCollisionState: {fileID: 1190070879}
   dukeCollisionState: {fileID: 153183860}
   maxFaceDirection: {fileID: 1190070876}

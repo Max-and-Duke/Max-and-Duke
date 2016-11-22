@@ -52,7 +52,7 @@ public class InputManager : MonoBehaviour {
 
 	public InputAxisState[] inputs;
 	public InputState inputState;
-	public Dog curDog = Dog.Max;
+	public static Dog curDog = Dog.Max;
 	public CollisionState maxCollisionState;
 	public CollisionState dukeCollisionState;
 	public MaxFaceDirection maxFaceDirection;
@@ -75,10 +75,10 @@ public class InputManager : MonoBehaviour {
 	public static Rigidbody2D maxBody2d ;
 	public static Rigidbody2D dukeBody2d ;
 
-	private bool leftKeyDown;
-	private bool rightKeyDown;
-	private bool upKeyDown;
-	private bool downKeyDown;
+	public static bool leftKeyDown;
+	public static bool rightKeyDown;
+	public static bool upKeyDown;
+	public static bool downKeyDown;
 
 	void Awake() {
 		initKeyState ();	
