@@ -14,6 +14,7 @@ public class KeyboardManager : MonoBehaviour {
 	public MaxFaceDirection maxFaceDirection;
 	public DukeFaceDirection dukeFaceDirection;
 
+	public InputManager inputManager;
 	// Use this for initialization
 	void Start () {
 	
@@ -66,7 +67,7 @@ public class KeyboardManager : MonoBehaviour {
 				}
 			}
 
-
+		
 		} else if (vertical < 0) {
 			if (InputManager.curDog == Dog.Max && InputManager.maxCanClimb) {
 				maxWalk.body2d.gravityScale = 0;
@@ -77,24 +78,9 @@ public class KeyboardManager : MonoBehaviour {
 
 			}
 		}
-
-		var switchDog = Input.GetAxis ("Fire1");
-		GameObject button = GameObject.Find ("Switch Player");
-		Image im = button.GetComponent<Image> ();
-		AudioSource audio = button.GetComponent<AudioSource> ();
-		DogSprites ds = button.GetComponent<DogSprites> ();
-		if (switchDog > 0) {
-			if (InputManager.curDog == Dog.Max) {
-				InputManager.curDog = Dog.Duke;
-				im.sprite = ds.dukeSprite;
-				audio.clip = (AudioClip)Resources.Load ("dukebark");
-				audio.Play ();
-			} else {
-				InputManager.curDog = Dog.Max;
-				im.sprite = ds.maxSprite;
-				audio.clip = (AudioClip)Resources.Load ("maxbark");
-				audio.Play ();
-			}
+			
+		if (Input.GetKeyDown("x")) {
+			inputManager.SwitchDog(); 				
 		}
 	}
 }

@@ -2745,6 +2745,7 @@ MonoBehaviour:
   dukeCollisionState: {fileID: 153183860}
   maxFaceDirection: {fileID: 1190070876}
   dukeFaceDirection: {fileID: 153183858}
+  inputManager: {fileID: 1277692705}
 --- !u!4 &786357619
 Transform:
   m_ObjectHideFlags: 0
