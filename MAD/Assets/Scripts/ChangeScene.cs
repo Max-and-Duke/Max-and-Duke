@@ -13,8 +13,10 @@ public class ChangeScene : MonoBehaviour {
 			Draggable.costSoFar = 0;
 			SoundManager.instance.playMusicSource ();
 		}
-		SoundManager.instance.PlaySingle (buttonClick);
-		SceneManager.LoadScene (nextScene, LoadSceneMode.Single);
+		if (SoundManager.instance) {
+			SoundManager.instance.PlaySingle (buttonClick);
+			SceneManager.LoadScene (nextScene, LoadSceneMode.Single);
+		}
 	}
 
 }

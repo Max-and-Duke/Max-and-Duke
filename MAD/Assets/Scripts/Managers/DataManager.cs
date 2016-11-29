@@ -20,7 +20,10 @@ public class DataManager : MonoBehaviour {
 		/// for loading json from outside file, 
 		/// see http://pressonegames.com/parsing-json-files-in-unity/
 		TextAsset asset = Resources.Load(GetFileName()) as TextAsset; 
-		data = JsonUtility.FromJson<SceneData> (asset.text);
+		if (asset) {
+			data = JsonUtility.FromJson<SceneData> (asset.text);
+		}
+
 	}
 
 	// Use this for initialization
