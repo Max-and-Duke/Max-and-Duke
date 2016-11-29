@@ -46,7 +46,7 @@ public class ModeManager : MonoBehaviour {
 		componentSettings = new Dictionary<string, float[]> 
 		{
 			{ "Console", new []{ -1080.0f, -540.0f, -1080.0f } },
-			{ "Toolbox", new []{ -440.0f, -640.0f, -640.0f } },
+			{ "Toolbox", new []{ -500.0f, -640.0f, -640.0f } },
 		};
 	}
 
