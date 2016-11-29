@@ -192,11 +192,19 @@ public class InputManager : MonoBehaviour {
 
 	public void RePosition(){
 		if (SoundManager.instance) {
-		SoundManager.instance.playMusicSource ();
+			SoundManager.instance.playMusicSource ();
 		}
+
+		// reset facing
+		maxFaceDirection.facingRight = true;
+		dukeFaceDirection.facingRight = true;
+
+		// reset position
 		maxBody2d.transform.position = maxPosition;
-		maxBody2d.velocity = new Vector2 (0, 0);
 		dukeBody2d.transform.position = dukePosition;
+
+		// reset velocity
+		maxBody2d.velocity = new Vector2 (0, 0);
 		dukeBody2d.velocity = new Vector2 (0, 0);
 	}
 
