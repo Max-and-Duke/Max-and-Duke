@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class KeyboardManager : MonoBehaviour {
@@ -12,6 +13,7 @@ public class KeyboardManager : MonoBehaviour {
 	public CollisionState dukeCollisionState;
 	public MaxFaceDirection maxFaceDirection;
 	public DukeFaceDirection dukeFaceDirection;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -73,6 +75,25 @@ public class KeyboardManager : MonoBehaviour {
 				dukeWalk.body2d.gravityScale = 0;
 				dukeWalk.body2d.transform.position = new Vector3(dukeBody2d.transform.position.x, dukeBody2d.transform.position.y-4, dukeBody2d.transform.position.z);
 
+			}
+		}
+
+		var switchDog = Input.GetAxis ("Fire1");
+		GameObject button = GameObject.Find ("Switch Player");
+		Image im = button.GetComponent<Image> ();
+		AudioSource audio = button.GetComponent<AudioSource> ();
+		DogSprites ds = button.GetComponent<DogSprites> ();
+		if (switchDog > 0) {
+			if (InputManager.curDog == Dog.Max) {
+				InputManager.curDog = Dog.Duke;
+				im.sprite = ds.dukeSprite;
+				audio.clip = (AudioClip)Resources.Load ("dukebark");
+				audio.Play ();
+			} else {
+				InputManager.curDog = Dog.Max;
+				im.sprite = ds.maxSprite;
+				audio.clip = (AudioClip)Resources.Load ("maxbark");
+				audio.Play ();
 			}
 		}
 	}
