@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
+
 public enum Mode {
 	// must be indexed for `componentSettings`
 	Deploy = 0,
@@ -31,10 +32,6 @@ public class ModeManager : MonoBehaviour {
 	}
 
 	private void LoadSettingsFromFile (string fileName) {
-		/// for loading json from outside file, 
-		/// see http://pressonegames.com/parsing-json-files-in-unity/
-		TextAsset asset = Resources.Load(fileName) as TextAsset; // which is never used.
-
 		/// DATA STRUCTURE EXPLANATION:
 		/// for each entry in the dictionary, 
 		/// - KEY: gameObject name (string)
@@ -79,6 +76,9 @@ public class ModeManager : MonoBehaviour {
 
 	public void GoToMode(Mode mode) {
 		currentMode = mode;
+		if (currentMode == Mode.Deploy) {
+			InputManager.instance.RePosition ();
+		}
 		foreach (KeyValuePair<string, float[]> entry in componentSettings) {
 			SlideTo (componentsPool[entry.Key], entry.Value[(int)mode]);
 		}

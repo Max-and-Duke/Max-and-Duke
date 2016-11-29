@@ -59,8 +59,8 @@ public class InputManager : MonoBehaviour {
 	public DukeFaceDirection dukeFaceDirection;
 	public static bool maxCanClimb = false;
 	public static bool dukeCanClimb = false;
-	public static Vector3 maxPosition = new Vector3 (-490, 230, 350);
-	public static Vector3 dukePosition = new Vector3 (-730, 230, 350);
+	public static Vector3 maxPosition; // = new Vector3 (-490, 230, 350);
+	public static Vector3 dukePosition; // = new Vector3 (-730, 230, 350);
 
 
 	public static float GRAVITY = 120f;
@@ -80,12 +80,31 @@ public class InputManager : MonoBehaviour {
 	public static bool upKeyDown;
 	public static bool downKeyDown;
 
+	public static InputManager instance = null;
+
 	void Awake() {
+		//Check if there is already an instance of SoundManager
+		if (instance == null) {
+			//if not, set it to this.
+			instance = this; 
+		}
+		//If instance already exists:
+		else if (instance != this) {
+			//Destroy this, this enforces our singleton pattern so there can only be one instance of SoundManager.
+			Destroy (gameObject);
+		}
+
 		initKeyState ();	
+
 		maxBody2d = maxWalk.body2d;
 		dukeBody2d = dukeWalk.body2d;
 		maxBody2d.gravityScale = GRAVITY;
 		dukeBody2d.gravityScale = GRAVITY;
+	}
+
+	void Start() {
+		maxPosition = DataManager.instance.data.maxPosition; 
+		dukePosition = DataManager.instance.data.dukePosition;
 	}
 
 	public void initKeyState() {
@@ -172,7 +191,9 @@ public class InputManager : MonoBehaviour {
 
 
 	public void RePosition(){
+		if (SoundManager.instance) {
 		SoundManager.instance.playMusicSource ();
+		}
 		maxBody2d.transform.position = maxPosition;
 		maxBody2d.velocity = new Vector2 (0, 0);
 		dukeBody2d.transform.position = dukePosition;
