@@ -3,6 +3,6 @@
 	"dukePosition": {"x": -600, "y": -80, "z": 350},
 	"numBoard": 2,
 	"numNail": 4,
-	"numBox": 0,
-	"thresholds": [0.1, 0.55]
+	"numBox": 1,
+	"thresholds": [0.22, 0.69]
 }

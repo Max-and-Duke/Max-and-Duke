@@ -4,5 +4,5 @@
 	"numBoard": 2,
 	"numNail": 4,
 	"numBox": 0,
-	"thresholds": [0.1, 0.55]
+	"thresholds": [0.15, 0.69]
 }

@@ -167,6 +167,7 @@ public class ModeManager : MonoBehaviour {
 
 	public void changeToolBoxBoardTag(bool isGoDeployMode){
 		if (!isGoDeployMode) {
+			// board
 			var toolBoxBoard = GameObject.Find ("Draggable-board");
 			toolBoxBoard.GetComponent<Collider2D> ().enabled = false;
 			var childrenColliders = toolBoxBoard.GetComponentsInChildren<Collider2D>();
@@ -174,7 +175,17 @@ public class ModeManager : MonoBehaviour {
 				childCollider.enabled = false;
 			}
 			toolBoxBoard.tag = "Special-board";
+
+			// box
+			var boxGameObject = GameObject.Find ("Draggable-box");
+			if (boxGameObject) {
+				boxGameObject.GetComponent<Collider2D> ().enabled = isGoDeployMode;
+				boxGameObject.tag = "Special-box";
+			}
+
+
 		} else {
+			// board
 			var toolBoxBoard = GameObject.FindGameObjectWithTag("Special-board");
 			toolBoxBoard.GetComponent<Collider2D> ().enabled = true;
 			var childrenColliders = toolBoxBoard.GetComponentsInChildren<Collider2D>();
@@ -182,18 +193,26 @@ public class ModeManager : MonoBehaviour {
 				childCollider.enabled = true;
 			}
 			toolBoxBoard.tag = "Board";
+
+			// box
+			var boxGameObject = GameObject.Find ("Draggable-box");
+			if (boxGameObject) {
+				boxGameObject.GetComponent<Collider2D> ().enabled = isGoDeployMode;
+				boxGameObject.tag = "Box";
+			}
+
 		}
 
-		// update box collider active 
-		var boxCollider = GameObject.Find ("Draggable-box").GetComponent<Collider2D> ();
-		if (boxCollider) {
-			boxCollider.enabled = isGoDeployMode;
-		}
 	}
 		
 	public void setIsKinematic(bool isKinematic){
 		foreach (var board in GameObject.FindGameObjectsWithTag("Board")) {
-			board.GetComponent<Rigidbody2D> ().isKinematic = isKinematic;
+			var rigidBody2D = board.GetComponent<Rigidbody2D> ();
+			rigidBody2D.isKinematic = isKinematic;
+			rigidBody2D.useAutoMass = false;
+			rigidBody2D.mass = isKinematic ? 1 : 100000; // magic number!
+			rigidBody2D.angularDrag = 0.5f;
+
 		}
 		foreach (var box in GameObject.FindGameObjectsWithTag("Box")) {
 			box.GetComponent<Rigidbody2D> ().isKinematic = isKinematic;
@@ -239,6 +258,7 @@ public class ModeManager : MonoBehaviour {
 				var boardScript = board.transform.GetComponent<Draggable> ();
 				if (boardScript.dragNailNum == 1) {
 					HingeJoint2D boardHJ = board.AddComponent<HingeJoint2D> ();
+
 					boardHJ.connectedAnchor = boardScript.nailPosition;
 					boardHJ.anchor = getRelativePosition(board.transform, boardScript.nailPosition);
 					boardHJ.enableCollision = active;

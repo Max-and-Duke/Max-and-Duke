@@ -23,12 +23,9 @@ public class DataManager : MonoBehaviour {
 		if (asset) {
 			data = JsonUtility.FromJson<SceneData> (asset.text);
 		}
-
-	}
-
-	// Use this for initialization
-	void Start () {
-
+		Draggable.boardNum = data.numBoard;
+		Draggable.nailNum = data.numNail;
+		Draggable.boxNum = data.numBox;
 	}
 
 	private string GetFileName() {

@@ -53,7 +53,7 @@ public class SoundManager : MonoBehaviour {
 
 				musicSource.clip = GameObject.Find ("Background Image").GetComponent<AudioSource> ().clip;
 				musicSource.Play ();
-				Debug.Log ("hha");
+//				Debug.Log ("hha");
 			}
 			audioPlay = false;
 		} else if (audioPlay == false) {

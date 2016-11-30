@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
@@ -16,16 +17,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	public Vector3[] nailPositionsRecord = new Vector3[3];
 	public bool canBeDrag;
 
-	public GameObject boardPrefab;
-	public GameObject nailPrefab;
+//	public GameObject boardPrefab;
+//	public GameObject nailPrefab;
 
 	private GameObject[] boardClonedGameObject;
 	private GameObject[] nailClonedGameObject;
 	private GameObject[] boxClonedGameObject;
-
-	public static void Ha() {
-		
-	}
 
 	private Dictionary<string, int> costDetails = new Dictionary<string, int>
 	{
@@ -35,12 +32,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	};
 	public static int costSoFar = 0;
 
-	public static int boardNum = 2;
-	public static int nailNum = 4;
-	public static int boxNum = 2;
+	public static int boardNum;// = 2;
+	public static int nailNum;// = 4;
+	public static int boxNum;// = 2;
 
-	private float originImageWidth;
-	private float originImageHeight;
+//	private float originImageWidth;
+//	private float originImageHeight;
 
 	private Vector3 emptyNailPos = new Vector3();
 
@@ -52,13 +49,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	private float boxHeight = 100f;
 	//private BoxCollider2D sceneCollider;
 
-	private Vector2 startPosition;
+//	private Vector2 startPosition;
 	private Vector2 inputPosition;
 	private Vector2 pivotOffset;
 	private Transform startParent;
 	private Vector2 oneClickStartPosition;
-	private Image image;
-	private Sprite originImageSprite;
+//	private Image image;
+//	private Sprite originImageSprite;
 
 
 	private CostManager costManager;
@@ -68,23 +65,17 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 //	private GameObject NailDropAreaLeft;
 //	private GameObject NailDropAreaRight;
 //	private GameObject NailDropAreaMiddle;
-	void Awake() {
 
-//		boardNum = 2;
-//		nailNum = 4;
-
-	}
 	void Start(){
 		boardClonedGameObject = new GameObject[boardNum];
 		nailClonedGameObject = new GameObject[nailNum];
 		boxClonedGameObject = new GameObject[boxNum];
-
-		image = itemBeingDragged.GetComponent<Image>();
-		originImageWidth = image.rectTransform.rect.width;
-		originImageHeight = image.rectTransform.rect.height;
+//		image = itemBeingDragged.GetComponent<Image>();
+//		originImageWidth = image.rectTransform.rect.width;
+//		originImageHeight = image.rectTransform.rect.height;
 		//print (originImage.rectTransform.rect.height);
-		originImageSprite = image.sprite;
-		startPosition = itemBeingDragged.transform.position;
+//		originImageSprite = image.sprite;
+//		startPosition = itemBeingDragged.transform.position;
 		dragNailNum = 0;
 //		nailPosition = itemBeingDragged.transform.position; 
 
@@ -124,10 +115,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	}
 
 
-
-
-
-
 	public void OnBeginDrag(PointerEventData eventData) {
 		
 		itemBeingDragged = gameObject;
@@ -153,7 +140,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 
 					boardClonedGameObject[boardNum] = GameObject.Instantiate (itemBeingDragged);
-
+					Debug.Log ("boardNum: " + boardNum.ToString());
 					itemBeingDragged = boardClonedGameObject [boardNum];
 					itemBeingDragged.GetComponent<Image> ().rectTransform.sizeDelta = new Vector2 (boardWidth, boardHeight);
 //					itemBeingDragged.transform.position = inputPosition - pivotOffset;
@@ -198,12 +185,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					itemBeingDragged.transform.SetParent (GameObject.Find("Canvas").transform);
 				}
 
-
-
-
-				//*******************8
-
-
 				var sceneCollider = itemBeingDragged.GetComponent<BoxCollider2D> ();
 				sceneCollider.size = new Vector2 (nailWidth, nailHeight);
 			}
@@ -236,7 +217,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					itemBeingDragged.transform.position = new Vector3(itemBeingDragged.transform.position.x,
 						itemBeingDragged.transform.position.y,
 						2f);
-					Debug.Log (itemBeingDragged.transform.position);
+//					Debug.Log (itemBeingDragged.transform.position);
 
 				}
 				//				image.rectTransform.sizeDelta = new Vector2 (boardWidth, boardHeight);
@@ -249,10 +230,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 				//				sceneCollider.bounds.size = new Vector3 (boardWidth, boardHeight, 0);
 			}
 
-
-
-				
-			//***************
 			if (itemBeingDragged == null) return;
 			
 			itemBeingDragged.GetComponent<Image> ().sprite = itemOutSidePanel;
@@ -261,10 +238,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 			costSoFar += costDetails[itemBeingDragged.tag];
 			costManager.SetCosts (costSoFar);
 //			Debug.Log ("~~~~~~~" + costSoFar);
-
-
-
-
 
 		} else {
 			var children = itemBeingDragged.GetComponentsInChildren<Image>();
@@ -283,8 +256,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		checkNailLeaveTheBoard ();
 
 	}
-
-
+		
 	private void checkNailLeaveTheBoard(){
 		var boardObjects= GameObject.FindGameObjectsWithTag("Board");
 		if(itemBeingDragged.tag == "Nail"){
@@ -310,7 +282,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					//itemBeingDragged.transform.position = NailDropAreaLeft.transform.position;
 					//Debug.Log ("in draggable     " + itemBeingDragged.transform.position);
 					var board = NailDropAreaLeft.transform.parent.GetComponent<Draggable> ();
-					Debug.Log ("leave left nail's parent is" + board.name);
+//					Debug.Log ("leave left nail's parent is" + board.name);
 					board.dragNailNum -= 1;
 					board.nailPositionsRecord [0] = emptyNailPos;
 					if (board.dragNailNum == 0) {
@@ -327,7 +299,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					//itemBeingDragged.transform.position = NailDropAreaLeft.transform.position;
 					//Debug.Log ("in draggable     " + itemBeingDragged.transform.position);
 					var board = NailDropAreaLeft.transform.parent.GetComponent<Draggable> ();
-					Debug.Log ("leave right nail's parent is" + board.name);
+//					Debug.Log ("leave right nail's parent is" + board.name);
 					board.dragNailNum -= 1;
 					board.nailPositionsRecord [2] = emptyNailPos;
 					if (board.dragNailNum == 0) {
@@ -344,7 +316,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					//itemBeingDragged.transform.position = NailDropAreaLeft.transform.position;
 					//Debug.Log ("in draggable     " + itemBeingDragged.transform.position);
 					var board = NailDropAreaLeft.transform.parent.GetComponent<Draggable> ();
-					Debug.Log ("leave middle nail's parent is" + board.name);
+//					Debug.Log ("leave middle nail's parent is" + board.name);
 					board.dragNailNum -= 1;
 					board.nailPositionsRecord [1] = emptyNailPos;
 					if (board.dragNailNum == 0) {
@@ -361,15 +333,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 			}
 		}
 	}
-
-
-
-
-
-
-
-
-
 
 
 	void OnTriggerEnter2D(Collider2D collider) {
@@ -433,7 +396,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					itemBeingDragged.transform.position = NailDropAreaLeft.transform.position;
 					//Debug.Log ("in draggable     " + itemBeingDragged.transform.position);
 					var board = NailDropAreaLeft.transform.parent.GetComponent<Draggable> ();
-					Debug.Log ("pin left nail's parent is" + board.name);
+//					Debug.Log ("pin left nail's parent is" + board.name);
 					board.dragNailNum += 1;
 					//dragNailNum += 1;
 
@@ -443,7 +406,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 					board.canBeDrag = false;
 					flagFound = true;
-					Debug.Log ("nail pin on the board" + board.dragNailNum);
+//					Debug.Log ("nail pin on the board" + board.dragNailNum);
 
 
 					//too verbose, should revise
@@ -458,10 +421,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 				} else if (itemBeingDragged.GetComponent<Collider2D> ().bounds.Intersects (NailDropAreaRight.GetComponent<Collider2D> ().bounds)) {
 					itemBeingDragged.transform.position = NailDropAreaRight.transform.position;
 					var board = NailDropAreaRight.transform.parent.GetComponent<Draggable> ();
-					Debug.Log ("pin right nail's parent is" + board.name);
+//					Debug.Log ("pin right nail's parent is" + board.name);
 					board.dragNailNum += 1;
 
-					Debug.Log ("nail pin on the board" + board.dragNailNum);
+//					Debug.Log ("nail pin on the board" + board.dragNailNum);
 
 					board.nailPositionsRecord[2] = NailDropAreaRight.transform.position;
 					board.nailPosition = NailDropAreaRight.transform.position;
@@ -472,10 +435,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 				} else if (itemBeingDragged.GetComponent<Collider2D> ().bounds.Intersects (NailDropAreaMiddle.GetComponent<Collider2D> ().bounds)) {
 					itemBeingDragged.transform.position = NailDropAreaMiddle.transform.position;
 					var board = NailDropAreaMiddle.transform.parent.GetComponent<Draggable> ();
-					Debug.Log ("pin middle nail's parent is" + board.name);
+//					Debug.Log ("pin middle nail's parent is" + board.name);
 					board.dragNailNum += 1;
 
-					Debug.Log ("nail pin on the board" + board.dragNailNum);
+//					Debug.Log ("nail pin on the board" + board.dragNailNum);
 
 					board.nailPositionsRecord[1] = NailDropAreaMiddle.transform.position;
 					board.nailPosition = NailDropAreaMiddle.transform.position;
@@ -561,7 +524,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 				costSoFar -= costDetails[itemBeingDragged.tag];
 				costManager.SetCosts (costSoFar);
-				Debug.Log ("~~~~~~~`" + costSoFar);
+//				Debug.Log ("~~~~~~~`" + costSoFar);
 
 
 				if (boxNum != 0 ) {
@@ -570,8 +533,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 				//				itemBeingDragged.transform.SetParent (GameObject.Find ("ToolBar-Board").transform);
 
 			} 
-
-
 
 
 //			CostSoFar -= costDetails[itemBeingDragged.tag];
@@ -593,11 +554,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 				}
 			}
 
-
 //			itemBeingDragged.transform.SetParent (GameObject.Find ("Canvas").transform);
 		}
 	}
-
-
 
 }

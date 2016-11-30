@@ -4,9 +4,8 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class CostManager : MonoBehaviour {
-	public GameObject filler;
+//	public GameObject filler;
 	private Image image;
-	public GameObject[] stars;
 
 	private Dictionary<string, Color32> palette = new Dictionary<string, Color32> {
 		{"3-star", new Color32(21, 159, 51, 255)},
@@ -51,7 +50,7 @@ public class CostManager : MonoBehaviour {
 		currentCost = 0;
 		maxCost = 100.0f;
 
-		image = filler.GetComponent<Image>();
+		image = GameObject.Find("Filler").GetComponent<Image>();
 	}
 		
 	private void UpdateImage(float fillAmount) {
