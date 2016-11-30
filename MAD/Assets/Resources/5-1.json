@@ -1,0 +1,8 @@
+{
+	"maxPosition": {"x": -600, "y": -140, "z": 350}, 
+	"dukePosition": {"x": -800, "y": -140, "z": 350},
+	"numBoard": 1,
+	"numNail": 2,
+	"numBox": 1,
+	"thresholds": [0.3, 0.6]
+}

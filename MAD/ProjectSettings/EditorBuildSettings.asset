@@ -12,7 +12,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Levels.unity
   - enabled: 1
-    path: Assets/Scenes/Level 4_1.unity
+    path: Assets/Scenes/Level 4-2.unity
   - enabled: 0
     path: Assets/Scenes/Level 4-2.unity
   - enabled: 0
@@ -28,10 +28,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SelectingScenes.unity
   - enabled: 1
-    path: Assets/Scenes/Level 3_1.unity
+    path: Assets/Scenes/Level 4-1.unity
   - enabled: 1
     path: Assets/Scenes/Level 5_1.unity
   - enabled: 1
     path: Assets/Scenes/Level 6_1.unity
   - enabled: 1
     path: Assets/Scenes/Levels (S6).unity
+  - enabled: 1
+    path: Assets/Scenes/Level 3-1.unity
+  - enabled: 1
+    path: Assets/Scenes/Level 3-2.unity
+  - enabled: 1
+    path: Assets/Scenes/Level 3-3.unity
+  - enabled: 1
+    path: Assets/Scenes/Level 4-3.unity

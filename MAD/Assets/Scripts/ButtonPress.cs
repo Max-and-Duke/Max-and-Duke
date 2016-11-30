@@ -14,7 +14,7 @@ public class ButtonPress : MonoBehaviour {
 			Rotate.instance.active = true;
 		}
 		if (Slidable.instance) {
-			Slidable.instance.Open = true;
+			Slidable.instance.On = true;
 		}
 	}
 
@@ -24,7 +24,7 @@ public class ButtonPress : MonoBehaviour {
 			Rotate.instance.active = false;
 		}
 		if (Slidable.instance) {
-			Slidable.instance.Open = false;
+			Slidable.instance.On = false;
 		}
 	}
 

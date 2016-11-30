@@ -46,9 +46,14 @@ public class CostManager : MonoBehaviour {
 		Value = val;
 	}
 
+	private float GetMaxCost() {
+		SceneData data = DataManager.instance.data;
+		return 30.0f * data.numBoard + 30.0f * data.numBox + 10.0f * data.numNail;
+	}
+
 	void Awake () {
 		currentCost = 0;
-		maxCost = 100.0f;
+		maxCost = GetMaxCost ();
 
 		image = GameObject.Find("Filler").GetComponent<Image>();
 	}
