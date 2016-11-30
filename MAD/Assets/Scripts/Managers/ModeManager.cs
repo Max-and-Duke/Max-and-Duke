@@ -211,7 +211,7 @@ public class ModeManager : MonoBehaviour {
 			rigidBody2D.isKinematic = isKinematic;
 			rigidBody2D.useAutoMass = false;
 			rigidBody2D.mass = isKinematic ? 1 : 100000; // magic number!
-			rigidBody2D.angularDrag = 0.5f;
+			rigidBody2D.angularDrag = 1.0f;
 
 		}
 		foreach (var box in GameObject.FindGameObjectsWithTag("Box")) {

@@ -140,7 +140,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 
 					boardClonedGameObject[boardNum] = GameObject.Instantiate (itemBeingDragged);
-					Debug.Log ("boardNum: " + boardNum.ToString());
+//					Debug.Log ("boardNum: " + boardNum.ToString());
 					itemBeingDragged = boardClonedGameObject [boardNum];
 					itemBeingDragged.GetComponent<Image> ().rectTransform.sizeDelta = new Vector2 (boardWidth, boardHeight);
 //					itemBeingDragged.transform.position = inputPosition - pivotOffset;

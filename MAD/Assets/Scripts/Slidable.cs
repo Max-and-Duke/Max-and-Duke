@@ -3,17 +3,18 @@ using System.Collections;
 
 public class Slidable : MonoBehaviour {
 	public static Slidable instance;
-	private bool isOpen = false;
+	private bool isOn = false;
 
-	private Vector3 openPosition;
-	private Vector3 closePosition;
-	public bool Open {
+	public float timeSpan = 3.0f;
+	public Vector3 DefaultPosition;
+	public Vector3 ActivePosition;
+	public bool On {
 		get { 
-			return isOpen;
+			return isOn;
 		}
 		set { 
 			Slide (value);
-			isOpen = value;
+			isOn = value;
 		}
 	}
 
@@ -32,19 +33,17 @@ public class Slidable : MonoBehaviour {
 	}
 
 	void Start () {
-		openPosition = new Vector3 (-100, 200, 350);
-		closePosition = new Vector3 (400, 200, 350);
-		transform.position = isOpen ? openPosition : closePosition;
+		transform.position = isOn ? ActivePosition : DefaultPosition;
 	}
 
 	private void SlideTo (GameObject gameObject, Vector3 to) {
 		// this is just a dummy implementation for now
 //		var vector = gameObject.transform.position;
 //		vector [1] = positionSlideTo;
-		iTween.MoveTo(gameObject, to, 1.0f);
+		iTween.MoveTo(gameObject, to, timeSpan);
 	}
 
 	private void Slide (bool status) {
-		SlideTo (gameObject, status ? openPosition : closePosition);
+		SlideTo (gameObject, status ? ActivePosition : DefaultPosition);
 	}
 }

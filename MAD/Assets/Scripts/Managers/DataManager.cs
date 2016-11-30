@@ -26,6 +26,7 @@ public class DataManager : MonoBehaviour {
 		Draggable.boardNum = data.numBoard;
 		Draggable.nailNum = data.numNail;
 		Draggable.boxNum = data.numBox;
+
 	}
 
 	private string GetFileName() {
