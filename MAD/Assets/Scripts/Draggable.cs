@@ -165,7 +165,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 					itemBeingDragged.transform.position = new Vector3(itemBeingDragged.transform.position.x,
 						itemBeingDragged.transform.position.y,
 						2f);
-					Debug.Log (itemBeingDragged.transform.position);
+//					Debug.Log (itemBeingDragged.transform.position);
 
 				}
 //				image.rectTransform.sizeDelta = new Vector2 (boardWidth, boardHeight);
@@ -260,7 +260,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 			costSoFar += costDetails[itemBeingDragged.tag];
 			costManager.SetCosts (costSoFar);
-			Debug.Log ("~~~~~~~" + costSoFar);
+//			Debug.Log ("~~~~~~~" + costSoFar);
 
 
 
@@ -407,7 +407,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		itemBeingDragged.transform.position = new Vector3(itemBeingDragged.transform.position.x,
 			itemBeingDragged.transform.position.y,
 			200f);
-		Debug.Log (itemBeingDragged.transform.position);
+//		Debug.Log (itemBeingDragged.transform.position);
 		if (itemBeingDragged.tag == "Nail") {
 			var boardObjects= GameObject.FindGameObjectsWithTag("Board");
 			bool flagFound = false;
@@ -510,7 +510,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 //										itemBeingDragged.GetComponent<Collider2D> ().bounds.extents);
 		
 		if (itemBeingDragged.GetComponent<Collider2D>().bounds.Intersects (panel.GetComponent<Collider2D> ().bounds)) {
-			Debug.Log ("haha");
+//			Debug.Log ("haha");
 
 			if (itemBeingDragged.tag == "Board") {
 				if (boardNum == -1)
@@ -522,7 +522,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 				costSoFar -= costDetails[itemBeingDragged.tag];
 				costManager.SetCosts (costSoFar);
-				Debug.Log ("~~~~~~~`" + costSoFar);
+//				Debug.Log ("~~~~~~~`" + costSoFar);
 
 				var children = itemBeingDragged.GetComponentsInChildren<Image> ();
 				foreach (Image child in children) {

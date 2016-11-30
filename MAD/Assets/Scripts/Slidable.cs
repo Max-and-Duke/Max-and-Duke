@@ -32,7 +32,7 @@ public class Slidable : MonoBehaviour {
 	}
 
 	void Start () {
-		openPosition = new Vector3 (100, 200, 350);
+		openPosition = new Vector3 (-100, 200, 350);
 		closePosition = new Vector3 (400, 200, 350);
 		transform.position = isOpen ? openPosition : closePosition;
 	}

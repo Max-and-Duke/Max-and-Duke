@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class CostManager : MonoBehaviour {
 	public GameObject filler;
 	private Image image;
+	public GameObject[] stars;
 
 	private Dictionary<string, Color32> palette = new Dictionary<string, Color32> {
 		{"3-star", new Color32(21, 159, 51, 255)},
@@ -13,8 +14,7 @@ public class CostManager : MonoBehaviour {
 		{"1-star", new Color32(249, 64, 0, 255)}
 	};
 
-	private float[] thresholds = new float[] { 0.10f, 0.55f };
-
+	private float[] thresholds;// = new float[] { 0.10f, 0.55f };
 
 	public int currentCost;
 	private float maxCost;
@@ -29,7 +29,7 @@ public class CostManager : MonoBehaviour {
 		}
 		set { 
 			if (image != null) {
-				UpdateImage (value);
+				UpdateStatus (value);
 			}
 		}
 	}
@@ -59,14 +59,44 @@ public class CostManager : MonoBehaviour {
 		image.color = GetColor (fillAmount);
 	}
 
+
+	private void SetAlpha(string name, float alpha) {
+		var spriteRenderer = GameObject.Find (name).GetComponent<SpriteRenderer> ();
+		var color = spriteRenderer.color;
+		color.a = alpha;
+		spriteRenderer.color = color;
+	}
+
+	private void UpdateStarNumber(float fillAmount) {
+		int numStar = GetStarNumbers ();
+
+		for (int i = 0; i < numStar; i++) {
+			SetAlpha ("Little Star " + (i + 1).ToString (), 255);
+		}
+
+		for (int i = numStar; i < 3; i++) {
+			SetAlpha ("Little Star " + (i + 1).ToString (), 0);
+		}
+	}
+
 	public void SetCosts(int currentCost) {
 		int previousCost = this.currentCost;
 		this.currentCost = currentCost;
 		UpdateProgress (GetFillAmount (previousCost), GetFillAmount (currentCost));
 	}
 
+	private void UpdateStatus(float v) {
+		UpdateImage (v);
+		UpdateStarNumber (v);
+	}
+
+	private void GetConfigData() {
+		thresholds = DataManager.instance.data.thresholds;
+	}
+
 	void Start () {
-		UpdateImage (1.0f);
+		GetConfigData (); // first thing in Start(). cannot not be placed in Awake()
+		UpdateStatus (1.0f);
 	}
 
 	public int GetStarNumbers() {
