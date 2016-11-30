@@ -4,6 +4,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
+
 public enum Mode {
 	// must be indexed for `componentSettings`
 	Deploy = 0,
@@ -31,10 +32,6 @@ public class ModeManager : MonoBehaviour {
 	}
 
 	private void LoadSettingsFromFile (string fileName) {
-		/// for loading json from outside file, 
-		/// see http://pressonegames.com/parsing-json-files-in-unity/
-		TextAsset asset = Resources.Load(fileName) as TextAsset; // which is never used.
-
 		/// DATA STRUCTURE EXPLANATION:
 		/// for each entry in the dictionary, 
 		/// - KEY: gameObject name (string)
@@ -46,7 +43,7 @@ public class ModeManager : MonoBehaviour {
 		componentSettings = new Dictionary<string, float[]> 
 		{
 			{ "Console", new []{ -1080.0f, -540.0f, -1080.0f } },
-			{ "Toolbox", new []{ -440.0f, -640.0f, -640.0f } },
+			{ "Toolbox", new []{ -500.0f, -640.0f, -640.0f } },
 		};
 	}
 
@@ -79,6 +76,9 @@ public class ModeManager : MonoBehaviour {
 
 	public void GoToMode(Mode mode) {
 		currentMode = mode;
+		if (currentMode == Mode.Deploy) {
+			InputManager.instance.RePosition ();
+		}
 		foreach (KeyValuePair<string, float[]> entry in componentSettings) {
 			SlideTo (componentsPool[entry.Key], entry.Value[(int)mode]);
 		}
@@ -167,6 +167,7 @@ public class ModeManager : MonoBehaviour {
 
 	public void changeToolBoxBoardTag(bool isGoDeployMode){
 		if (!isGoDeployMode) {
+			// board
 			var toolBoxBoard = GameObject.Find ("Draggable-board");
 			toolBoxBoard.GetComponent<Collider2D> ().enabled = false;
 			var childrenColliders = toolBoxBoard.GetComponentsInChildren<Collider2D>();
@@ -174,7 +175,17 @@ public class ModeManager : MonoBehaviour {
 				childCollider.enabled = false;
 			}
 			toolBoxBoard.tag = "Special-board";
+
+			// box
+			var boxGameObject = GameObject.Find ("Draggable-box");
+			if (boxGameObject) {
+				boxGameObject.GetComponent<Collider2D> ().enabled = isGoDeployMode;
+				boxGameObject.tag = "Special-box";
+			}
+
+
 		} else {
+			// board
 			var toolBoxBoard = GameObject.FindGameObjectWithTag("Special-board");
 			toolBoxBoard.GetComponent<Collider2D> ().enabled = true;
 			var childrenColliders = toolBoxBoard.GetComponentsInChildren<Collider2D>();
@@ -182,27 +193,29 @@ public class ModeManager : MonoBehaviour {
 				childCollider.enabled = true;
 			}
 			toolBoxBoard.tag = "Board";
+
+			// box
+			var boxGameObject = GameObject.Find ("Draggable-box");
+			if (boxGameObject) {
+				boxGameObject.GetComponent<Collider2D> ().enabled = isGoDeployMode;
+				boxGameObject.tag = "Box";
+			}
+
 		}
+
 	}
+		
+	public void setIsKinematic(bool isKinematic){
+		foreach (var board in GameObject.FindGameObjectsWithTag("Board")) {
+			var rigidBody2D = board.GetComponent<Rigidbody2D> ();
+			rigidBody2D.isKinematic = isKinematic;
+			rigidBody2D.useAutoMass = false;
+			rigidBody2D.mass = isKinematic ? 1 : 100000; // magic number!
+			rigidBody2D.angularDrag = 0.5f;
 
-
-
-
-
-
-	public void setIsKinematic(bool a){
-//		var children = GameObject.fin;
-		if (a) {
-			var boards = GameObject.FindGameObjectsWithTag("Board");
-			foreach (var board in boards) {
-				board.GetComponent<Rigidbody2D> ().isKinematic = true;
-			}
-
-		} else {
-			var boards = GameObject.FindGameObjectsWithTag("Board");
-			foreach (var board in boards) {
-				board.GetComponent<Rigidbody2D> ().isKinematic = false;
-			}
+		}
+		foreach (var box in GameObject.FindGameObjectsWithTag("Box")) {
+			box.GetComponent<Rigidbody2D> ().isKinematic = isKinematic;
 		}
 	}
 
@@ -215,6 +228,11 @@ public class ModeManager : MonoBehaviour {
 		var nails = GameObject.FindGameObjectsWithTag("Nail");
 		foreach (var nail in nails) {
 			nail.GetComponent<Draggable> ().enabled = active;
+		}
+
+		var boxes = GameObject.FindGameObjectsWithTag("Box");
+		foreach (var box in boxes) {
+			box.GetComponent<Draggable> ().enabled = active;
 		}
 	}
 
@@ -240,6 +258,7 @@ public class ModeManager : MonoBehaviour {
 				var boardScript = board.transform.GetComponent<Draggable> ();
 				if (boardScript.dragNailNum == 1) {
 					HingeJoint2D boardHJ = board.AddComponent<HingeJoint2D> ();
+
 					boardHJ.connectedAnchor = boardScript.nailPosition;
 					boardHJ.anchor = getRelativePosition(board.transform, boardScript.nailPosition);
 					boardHJ.enableCollision = active;

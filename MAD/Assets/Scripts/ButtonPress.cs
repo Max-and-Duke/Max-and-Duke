@@ -10,13 +10,22 @@ public class ButtonPress : MonoBehaviour {
 	void OnCollisionEnter2D ()
 	{
 		this.GetComponent<SpriteRenderer> ().sprite = spriteOn;
-		Rotate.instance.active = true;
-
+		if (Rotate.instance) {
+			Rotate.instance.active = true;
+		}
+		if (Slidable.instance) {
+			Slidable.instance.Open = true;
+		}
 	}
 
 	void OnCollisionExit2D() {
 		this.GetComponent<SpriteRenderer> ().sprite = spriteOff;
-		Rotate.instance.active = false;
+		if (Rotate.instance) {
+			Rotate.instance.active = false;
+		}
+		if (Slidable.instance) {
+			Slidable.instance.Open = false;
+		}
 	}
 
 

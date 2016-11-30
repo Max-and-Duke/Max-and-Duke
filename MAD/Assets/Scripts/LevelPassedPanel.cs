@@ -13,16 +13,16 @@ public class LevelPassedPanel : MonoBehaviour {
 	public AudioClip levelPassedAudio;
 
 	void OnClickLevelButton () {
-		Debug.Log ("Go back to level list.");
+//		Debug.Log ("Go back to level list.");
 	}
 
 	void OnClickReplayButton () {
-		Debug.Log ("Replay this level.");
+//		Debug.Log ("Replay this level.");
 		//		ResetCharacters ();
 	}
 
 	void OnClickNextButton () {
-		Debug.Log ("Go to next level!");
+//		Debug.Log ("Go to next level!");
 	}
 		
 	void HideGameObjects() {
@@ -80,8 +80,10 @@ public class LevelPassedPanel : MonoBehaviour {
 	}
 
 	public void Choice () {
-		SoundManager.instance.stopMusicSource();
-		SoundManager.instance.PlaySingle (levelPassedAudio);
+		if (SoundManager.instance) {
+			SoundManager.instance.stopMusicSource ();
+			SoundManager.instance.PlaySingle (levelPassedAudio);
+		}
 		levelPassedPanelObject.SetActive (true);
 		ShowStars ();
 		HideGameObjects ();

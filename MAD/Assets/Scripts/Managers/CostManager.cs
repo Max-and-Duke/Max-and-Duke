@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class CostManager : MonoBehaviour {
-	public GameObject filler;
+//	public GameObject filler;
 	private Image image;
 
 	private Dictionary<string, Color32> palette = new Dictionary<string, Color32> {
@@ -13,8 +13,7 @@ public class CostManager : MonoBehaviour {
 		{"1-star", new Color32(249, 64, 0, 255)}
 	};
 
-	private float[] thresholds = new float[] { 0.10f, 0.55f };
-
+	private float[] thresholds;// = new float[] { 0.10f, 0.55f };
 
 	public int currentCost;
 	private float maxCost;
@@ -29,7 +28,7 @@ public class CostManager : MonoBehaviour {
 		}
 		set { 
 			if (image != null) {
-				UpdateImage (value);
+				UpdateStatus (value);
 			}
 		}
 	}
@@ -51,12 +50,32 @@ public class CostManager : MonoBehaviour {
 		currentCost = 0;
 		maxCost = 100.0f;
 
-		image = filler.GetComponent<Image>();
+		image = GameObject.Find("Filler").GetComponent<Image>();
 	}
 		
 	private void UpdateImage(float fillAmount) {
 		image.fillAmount = fillAmount;
 		image.color = GetColor (fillAmount);
+	}
+
+
+	private void SetAlpha(string name, float alpha) {
+		var spriteRenderer = GameObject.Find (name).GetComponent<SpriteRenderer> ();
+		var color = spriteRenderer.color;
+		color.a = alpha;
+		spriteRenderer.color = color;
+	}
+
+	private void UpdateStarNumber(float fillAmount) {
+		int numStar = GetStarNumbers ();
+
+		for (int i = 0; i < numStar; i++) {
+			SetAlpha ("Little Star " + (i + 1).ToString (), 255);
+		}
+
+		for (int i = numStar; i < 3; i++) {
+			SetAlpha ("Little Star " + (i + 1).ToString (), 0);
+		}
 	}
 
 	public void SetCosts(int currentCost) {
@@ -65,8 +84,18 @@ public class CostManager : MonoBehaviour {
 		UpdateProgress (GetFillAmount (previousCost), GetFillAmount (currentCost));
 	}
 
+	private void UpdateStatus(float v) {
+		UpdateImage (v);
+		UpdateStarNumber (v);
+	}
+
+	private void GetConfigData() {
+		thresholds = DataManager.instance.data.thresholds;
+	}
+
 	void Start () {
-		UpdateImage (1.0f);
+		GetConfigData (); // first thing in Start(). cannot not be placed in Awake()
+		UpdateStatus (1.0f);
 	}
 
 	public int GetStarNumbers() {
