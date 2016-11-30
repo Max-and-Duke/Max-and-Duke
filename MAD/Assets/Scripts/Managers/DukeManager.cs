@@ -19,7 +19,7 @@ public class DukeManager : MonoBehaviour {
 
 		if(absX >= 0.01){
 			animator.SetInteger ("AnimState", 1);
-			Debug.Log (absX);
+//			Debug.Log (absX);
 		}
 	
 	}

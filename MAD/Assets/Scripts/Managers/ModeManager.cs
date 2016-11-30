@@ -183,26 +183,20 @@ public class ModeManager : MonoBehaviour {
 			}
 			toolBoxBoard.tag = "Board";
 		}
+
+		// update box collider active 
+		var boxCollider = GameObject.Find ("Draggable-box").GetComponent<Collider2D> ();
+		if (boxCollider) {
+			boxCollider.enabled = isGoDeployMode;
+		}
 	}
-
-
-
-
-
-
-	public void setIsKinematic(bool a){
-//		var children = GameObject.fin;
-		if (a) {
-			var boards = GameObject.FindGameObjectsWithTag("Board");
-			foreach (var board in boards) {
-				board.GetComponent<Rigidbody2D> ().isKinematic = true;
-			}
-
-		} else {
-			var boards = GameObject.FindGameObjectsWithTag("Board");
-			foreach (var board in boards) {
-				board.GetComponent<Rigidbody2D> ().isKinematic = false;
-			}
+		
+	public void setIsKinematic(bool isKinematic){
+		foreach (var board in GameObject.FindGameObjectsWithTag("Board")) {
+			board.GetComponent<Rigidbody2D> ().isKinematic = isKinematic;
+		}
+		foreach (var box in GameObject.FindGameObjectsWithTag("Box")) {
+			box.GetComponent<Rigidbody2D> ().isKinematic = isKinematic;
 		}
 	}
 
@@ -215,6 +209,11 @@ public class ModeManager : MonoBehaviour {
 		var nails = GameObject.FindGameObjectsWithTag("Nail");
 		foreach (var nail in nails) {
 			nail.GetComponent<Draggable> ().enabled = active;
+		}
+
+		var boxes = GameObject.FindGameObjectsWithTag("Box");
+		foreach (var box in boxes) {
+			box.GetComponent<Draggable> ().enabled = active;
 		}
 	}
 
