@@ -21,6 +21,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 	private GameObject[] boardClonedGameObject;
 	private GameObject[] nailClonedGameObject;
+	private GameObject[] boxClonedGameObject;
 
 	public static void Ha() {
 		
@@ -29,12 +30,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	private Dictionary<string, int> costDetails = new Dictionary<string, int>
 	{
 		{"Board", 30},
-		{"Nail", 10}
+		{"Nail", 10},
+		{"Box", 30}
 	};
 	public static int costSoFar = 0;
 
 	public static int boardNum = 2;
 	public static int nailNum = 4;
+	public static int boxNum = 2;
 
 	private float originImageWidth;
 	private float originImageHeight;
@@ -45,6 +48,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	private float boardHeight = 60f;
 	private float nailWidth = 50f;
 	private float nailHeight = 50f;
+	private float boxWidth = 100f;
+	private float boxHeight = 100f;
 	//private BoxCollider2D sceneCollider;
 
 	private Vector2 startPosition;
@@ -72,6 +77,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	void Start(){
 		boardClonedGameObject = new GameObject[boardNum];
 		nailClonedGameObject = new GameObject[nailNum];
+		boxClonedGameObject = new GameObject[boxNum];
 
 		image = itemBeingDragged.GetComponent<Image>();
 		originImageWidth = image.rectTransform.rect.width;
@@ -108,6 +114,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 			}
 		} else if (itemBeingDragged.tag == "Nail"){
 			countTool.text = "x " + nailNum;
+		} else if (itemBeingDragged.tag == "Box"){
+			countTool.text = "x " + boxNum;
 		}
 
 
@@ -198,6 +206,47 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 				var sceneCollider = itemBeingDragged.GetComponent<BoxCollider2D> ();
 				sceneCollider.size = new Vector2 (nailWidth, nailHeight);
+			}
+
+			else if (itemBeingDragged.tag == "Box") {
+
+				if (boxNum <= 0) {
+					itemBeingDragged = null;
+					return;
+				}
+
+				if (itemBeingDragged.GetComponent<Image> ().sprite == itemOutSidePanel)
+					return;
+
+				boxNum = boxNum - 1;
+				if (boardNum >= 0) {
+					countTool.text = "x " + boxNum;
+
+
+					boxClonedGameObject[boxNum] = GameObject.Instantiate (itemBeingDragged);
+
+					itemBeingDragged = boxClonedGameObject [boxNum];
+					itemBeingDragged.GetComponent<Image> ().rectTransform.sizeDelta = new Vector2 (boxWidth, boxHeight);
+					//					itemBeingDragged.transform.position = inputPosition - pivotOffset;
+					//					Debug.Log("before setParent" + itemBeingDragged.transform.position);
+					itemBeingDragged.transform.position = inputPosition - pivotOffset;
+					//					Debug.Log("after reset to toolbox transform position" + itemBeingDragged.transform.position);
+					itemBeingDragged.transform.SetParent(GameObject.Find("Canvas").transform);
+					//					Debug.Log("after set parent" + itemBeingDragged.transform.position);
+					itemBeingDragged.transform.position = new Vector3(itemBeingDragged.transform.position.x,
+						itemBeingDragged.transform.position.y,
+						2f);
+					Debug.Log (itemBeingDragged.transform.position);
+
+				}
+				//				image.rectTransform.sizeDelta = new Vector2 (boardWidth, boardHeight);
+
+				//				var sceneCollider = itemBeingDragged.GetComponent<BoxCollider2D> ();
+				//				sceneCollider.size = new Vector2 (boardWidth, boardHeight);
+
+
+
+				//				sceneCollider.bounds.size = new Vector3 (boardWidth, boardHeight, 0);
 			}
 
 
@@ -501,6 +550,26 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 				}
 //				itemBeingDragged.transform.SetParent (GameObject.Find ("ToolBar-Nail").transform);
 			}
+
+			else if (itemBeingDragged.tag == "Box") {
+				if (boxNum == -1)
+					return;
+				boxNum = boxNum + 1;
+				countTool.text = "x " + boxNum;
+				//reset the object rotate to 0
+				itemBeingDragged.transform.rotation=Quaternion.identity;
+
+				costSoFar -= costDetails[itemBeingDragged.tag];
+				costManager.SetCosts (costSoFar);
+				Debug.Log ("~~~~~~~`" + costSoFar);
+
+
+				if (boxNum != 0 ) {
+					Object.Destroy (itemBeingDragged);
+				}
+				//				itemBeingDragged.transform.SetParent (GameObject.Find ("ToolBar-Board").transform);
+
+			} 
 
 
 

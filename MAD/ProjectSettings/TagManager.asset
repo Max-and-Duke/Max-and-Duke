@@ -9,6 +9,7 @@ TagManager:
   - ToolBoxBoard
   - ToolBoxNail
   - Special-board
+  - Box
   layers:
   - Default
   - TransparentFX
