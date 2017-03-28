@@ -1,6 +1,6 @@
 # Game Design Document for *Max & Duke* 
 
-![](mad.jpg)
+![](images/mad.jpg)
 
 By team **Hatters**🎩:
 
@@ -18,7 +18,7 @@ In this game, the player should configure a route for Max and Duke and help them
 
 ## User Interface
 ### 🗺 App Map 
-![](screens.png)
+![](images/screens.png)
 
 | 1 | 2 | 3 |
 |---|---|---|
@@ -82,9 +82,6 @@ In this game, the player should configure a route for Max and Duke and help them
 
 ### 🎨 Artwork 
 Most of the artwork is based on that from the movie.
-Here is a draft screen shot for the sake of demonstration:
-
-![](samplescreenshot.png)
 
 ## Gameplay
 ### 🎚 Scenes and Levels 

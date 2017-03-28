@@ -105,6 +105,7 @@ public class InputManager : MonoBehaviour {
 	void Start() {
 		maxPosition = DataManager.instance.data.maxPosition; 
 		dukePosition = DataManager.instance.data.dukePosition;
+		curDog = Dog.Max;
 	}
 
 	public void initKeyState() {
